@@ -3,7 +3,7 @@ var router = express.Router();
 var http = require ('http');
 
 router.all('/api-vlc/status', function(req, res, next){
-    http.get('http://127.0.0.1/' );
+    http.get('http://127.0.0.1/status.xml' );
 });
 
 router.all('/api-vlc/play', function(req, res, next){
