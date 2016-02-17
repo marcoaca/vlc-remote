@@ -7,5 +7,5 @@ router.all('/api-vlc/status', function(req, res, next){
 });
 
 router.all('/api-vlc/play', function(req, res, next){
-    http.get();
+    http.get('http://127.0.0.1/');
 })
