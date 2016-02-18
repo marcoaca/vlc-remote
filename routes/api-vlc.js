@@ -72,11 +72,15 @@ router.all('/play', function(req, res, next){
 });
 
 router.all('/pause', function(req, res, next){
-    request.get('http://127.0.0.1:8080/requests/status.xml?command=pl_pause');
+    request.get('http://127.0.0.1:8080/requests/status.xml?command=pl_pause', function(error,response,body){
+        res.status(200);
+    });
 });
 
 router.all('/stop', function(req, res, next){
-    request.get('http://127.0.0.1:8080/requests/status.xml?command=pl_stop');
+    request.get('http://127.0.0.1:8080/requests/status.xml?command=pl_stop', function(error,response,body){
+        res.status(200);
+    });
 });
 
 

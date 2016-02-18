@@ -26,15 +26,31 @@ $(document).ready(function () {
             });
     });
 
+    $('.site-header__icon__audio').click(function(){
+        if($('body').hasClass('is-audio-on')){
+            $.get('/api-vlc/pause');
+        }else{
+            $.get('/api-vlc/play');
+        }
+    });
+
     function refresh(){
         $.get('/api-vlc/status')
             .done(function(data){
                 var obj = JSON.parse(data);
+                var state = obj.state;
+                var temp = obj.information.category.meta.title.split(' - ');
 
-                temp = obj.information.category.meta.title.split(' - ');
                 if (temp.length >1){
                     $('#nome_artista').html(temp[0]);
                     $('#nome_musica').html(temp[1]);
+                }
+                if(state){
+                    if(state=='playing'){
+                        $('body').removeClass('is-audio-off').addClass('is-audio-on');
+                    }else{
+                        $('body').removeClass('is-audio-on').addClass('is-audio-off');
+                    }
                 }
 
             })
