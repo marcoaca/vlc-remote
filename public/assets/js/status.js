@@ -1,23 +1,20 @@
-/**
- * Created by amaralm on 18/02/2016.
- */
 $(document).ready(function () {
     $('a[href="#playlist"]').click(function () {
         $.get('/api-vlc/playlist')
             .done(function (data) {
                 var obj = JSON.parse(data);
                 var html = '';
-                var template = "<li><span class='musica'>%musica%</span><span class='color'>%tempo%</span></li>";
+                var template = "<li><span>%music%</span><span class='color'>%time%</span></li>";
 
                 obj.children[0].children.forEach(function(element, index, array){
                     var time = element.duration;
-                    var d = new Date(0,0,0);
                     var time_text = '';
                     if(time > 0){
-                        d.setSeconds(time);
-                        time_text = '   ' + d.getMinutes() + ':' + d.getSeconds();
+                        var date = new Date(0,0,0);
+                        date.setSeconds(time);
+                        time_text = '   ' + date.getMinutes() + ':' + date.getSeconds();
                     }
-                    html += template.replace('%musica%',element.name).replace('%tempo%',time_text);
+                    html += template.replace('%music%',element.name).replace('%time%',time_text);
                 });
                 $('#lista').html(html);
             })
@@ -39,25 +36,30 @@ $(document).ready(function () {
             .done(function(data){
                 var obj = JSON.parse(data);
                 var state = obj.state;
-                var temp = obj.information.category.meta.title.split(' - ');
+                var info = obj.information.category.meta.title.split(' - ');
 
-                if (temp.length >1){
-                    $('#nome_artista').html(temp[0]);
-                    $('#nome_musica').html(temp[1]);
+                if (info.length > 1){
+                    $('#nome_artista').html(info[0]);
+                    $('#nome_musica').html(info[1]);
+                } else if(info.length == 1) {
+                    $('#nome_artista').html(info[0]);
+                } else {
+                    $('#nome_artista').html("No Music On");
+                    $('#nome_musica').html("Playlist");
                 }
+
                 if(state){
-                    if(state=='playing'){
+                    if(state == 'playing'){
                         $('body').removeClass('is-audio-off').addClass('is-audio-on');
-                    }else{
+                    } else {
                         $('body').removeClass('is-audio-on').addClass('is-audio-off');
                     }
                 }
-
             })
             .fail(function(data){
-
+                alert(data);
             });
-        setTimeout(refresh,950);
+        setTimeout(refresh,960);
     }
-    setTimeout(refresh,950);
+    setTimeout(refresh,960);
 });
