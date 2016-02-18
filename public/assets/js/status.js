@@ -25,4 +25,23 @@ $(document).ready(function () {
                 alert(data);
             });
     });
+
+    function refresh(){
+        $.get('/api-vlc/status')
+            .done(function(data){
+                var obj = JSON.parse(data);
+
+                temp = obj.information.category.meta.title.split(' - ');
+                if (temp.length >1){
+                    $('#nome_artista').html(temp[0]);
+                    $('#nome_musica').html(temp[1]);
+                }
+
+            })
+            .fail(function(data){
+
+            });
+        setTimeout(refresh,950);
+    }
+    setTimeout(refresh,950);
 });

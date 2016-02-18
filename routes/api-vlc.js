@@ -24,7 +24,11 @@ router.all('/playlist', function(req, res, next){
 });
 
 router.all('/status', function(req, res, next){
-    request.get('http://127.0.0.1:8080/status.xml');
+    request.get('http://127.0.0.1:8080/requests/status.json', function(error, response, body){
+        if(!error){
+            res.status(200).send(body);
+        }
+    });
 });
 
 router.all('/add', function (req, res, next) {
