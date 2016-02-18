@@ -3,7 +3,8 @@ var router = express.Router();
 var r = require("request");
 var parseString = require('xml2js').parseString;
 
-var pass = 'password';
+var pass = 'password'; // password for vlc http connection
+
 var authHeader = 'Basic ' +  (new Buffer(':' + pass, 'utf8')).toString('base64') ;
 
 var request = r.defaults({
@@ -13,7 +14,13 @@ var request = r.defaults({
 });
 
 router.all('/playlist', function(req, res, next){
-    request.get('http://127.0.0.1:8080/playlist.xml' );
+    request.get('http://127.0.0.1:8080/requests/playlist.json', function(error,response,body){
+        if(error){
+            res.status(500).json({error:error});
+        }
+        console.log(body);
+        res.status(200).json(body);
+    });
 });
 
 router.all('/status', function(req, res, next){
@@ -21,9 +28,9 @@ router.all('/status', function(req, res, next){
 });
 
 router.all('/add', function (req, res, next) {
-    var m = req.query.music ? encodeURIComponent(req.query.music): null;
+    var m = req.query.music ? encodeURIComponent(req.query.music): req.body.music ? encodeURIComponent(req.body.music): null;
     if(!m){
-        res.send('erro: nenhuma musica');
+        res.status(500).json({error:'Missing music argument.'});
         return;
     }
     request.get('http://127.0.0.1:8080/requests/status.xml',
@@ -33,7 +40,6 @@ router.all('/add', function (req, res, next) {
                 res.send(error);
                 return;
             }
-
             if (!error && response.statusCode == 200) {
                 parseString(body, function (err, result) {
                     if (result.root.currentplid[0] >-1) {
@@ -58,7 +64,7 @@ router.all('/add', function (req, res, next) {
 });
 
 router.all('/play', function(req, res, next){
-    request.get('http://127.0.0.1:8080/requests/status.xml?command=pl_pause');
+    request.get('http://127.0.0.1:8080/requests/status.xml?command=pl_play');
 });
 
 router.all('/pause', function(req, res, next){
