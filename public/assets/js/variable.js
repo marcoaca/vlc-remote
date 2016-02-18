@@ -62,7 +62,7 @@ var _bg_video_youtube_url =             'SJwBTUSqLa0'; // youtube video url id -
 var _bg_video_youtube_quality =         'hightres'; // hightres, hd1080, hd720, default - youtube video quality
 var _bg_video_youtube_start =           95; // seconds - video start time
 var _bg_video_youtube_end =             260; // seconds - video end time, 0 to ignored
-var _bg_video_youtube_loop =            true; // true, false - video loop
+var _bg_video_youtube_loop =            false; // true, false - video loop
 
 //
 // background effect (cloud / star)

@@ -18,7 +18,6 @@ router.all('/playlist', function(req, res, next){
         if(error){
             res.status(500).json({error:error});
         }
-        console.log(body);
         res.status(200).json(body);
     });
 });
@@ -28,6 +27,7 @@ router.all('/status', function(req, res, next){
         if(!error){
             res.status(200).send(body);
         }
+        res.status(500).json({error:error});
     });
 });
 
@@ -68,7 +68,9 @@ router.all('/add', function (req, res, next) {
 });
 
 router.all('/play', function(req, res, next){
-    request.get('http://127.0.0.1:8080/requests/status.xml?command=pl_play');
+    request.get('http://127.0.0.1:8080/requests/status.xml?command=pl_play', function(error,response,body){
+        res.status(200);
+    });
 });
 
 router.all('/pause', function(req, res, next){

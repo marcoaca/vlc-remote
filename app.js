@@ -4,8 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var fs = require('fs');
 /*
+var fs = require('fs');
+
 var array = ["noConflict",
     "use strict",
     "html",
@@ -44,12 +45,12 @@ fs.writeFile('C:\\Users\\amaralm\\WebstormProjects\\vlc-remote\\public\\assets\\
 console.log(s);*/
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
 var api_vlc = require('./routes/api-vlc');
 
 var app = express();
 
 // view engine setup
+//desativar o jade????
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
@@ -62,7 +63,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
 app.use('/api-vlc', api_vlc);
 
 // catch 404 and forward to error handler
