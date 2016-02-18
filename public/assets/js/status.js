@@ -2,20 +2,24 @@
  * Created by amaralm on 18/02/2016.
  */
 $(document).ready(function () {
-    $('#lista').click(function () {
+    $('a[href="#playlist"]').click(function () {
         $.get('/api-vlc/playlist')
             .done(function (data) {
                 var obj = JSON.parse(data);
                 var html = '';
-                var template_ini = "<li><span class='musica'>";
-                var template_fim = "</span></li>";
+                var template = "<li><span class='musica'>%musica%</span><span class='color'>%tempo%</span></li>";
 
-                obj.children.children.forEach(function(element, index, array){
-                    html += template_ini + element.nome + template_fim;
-                })
-                console.log(data);
-
-
+                obj.children[0].children.forEach(function(element, index, array){
+                    var time = element.duration;
+                    var d = new Date(0,0,0);
+                    var time_text = '';
+                    if(time > 0){
+                        d.setSeconds(time);
+                        time_text = '   ' + d.getMinutes() + ':' + d.getSeconds();
+                    }
+                    html += template.replace('%musica%',element.name).replace('%tempo%',time_text);
+                });
+                $('#lista').html(html);
             })
             .fail(function (data) {
                 alert(data);
