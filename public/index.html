@@ -4,8 +4,9 @@
 <html class="no-js" lang="en">
 <!--<![endif]-->
 
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
 <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>IZ Player</title>
@@ -106,7 +107,19 @@
                     data-animation-out="fadeOutDown"
                     data-animation-out-delay="300">
                       <!-- countdown -->
-                      <div class="row" id="countdown_dashboard">
+                        <div class="row row-centered">
+                            <div class="col-xs-2"></div>
+                            <div class="col-xs-2"></div>
+                            <div class="col-xs-2">
+                                <div id="minutes_digit" class="digit">00</div>
+                                <span class="dash_title">minutes</span>
+                            </div>
+                            <div class="col-xs-2">
+                                <div id="seconds_digit" class="digit">00</div>
+                                <span class="dash_title">seconds</span>
+                            </div>
+                        </div>
+                      <div class="row" id="countdown_dashboard" style="display: none">
 					  <div class="col-xs-2 dash hours_dash"></div> 
 					  <div class="col-xs-2 dash hours_dash"></div> 
                         <div class="col-xs-2 dash hours_dash">
@@ -168,7 +181,7 @@
         <!-- playlist -->
         <div id="playlist" class="mfp-hide">
           <div class="newsletter-overlay"></div>
-          <form class="form-theme" id="formNewsletter">
+          <form class="form-theme" id="formPlaylist">
             <h3 class="form-title">Play <span class="color">List</span></h3> <!-- title -->
             <p class="form-subtitle"></p> <!-- subtitle -->
             <div class="hr"></div> <!-- line -->

@@ -17,6 +17,7 @@ router.all('/playlist', function(req, res, next){
     request.get('http://127.0.0.1:8080/requests/playlist.json', function(error,response,body){
         if(error){
             res.status(500).json({error:error});
+            return;
         }
         res.status(200).json(body);
     });
@@ -26,6 +27,7 @@ router.all('/status', function(req, res, next){
     request.get('http://127.0.0.1:8080/requests/status.json', function(error, response, body){
         if(!error){
             res.status(200).send(body);
+            return;
         }
         res.status(500).json({error:error});
     });
@@ -50,38 +52,44 @@ router.all('/add', function (req, res, next) {
                         request.get('http://127.0.0.1:8080/requests/status.xml?command=in_enqueue&input=' + m,
                             function (error, response, body) {
                                 res.status(200).send('');
+                                return;
                             }
                         );
                     } else {
                         request.get('http://127.0.0.1:8080/requests/status.xml?command=in_play&input=' + m,
                             function (error, response, body) {
                                 res.status(200).send('');
+                                return;
                             }
                         );
                     }
                 });
             } else {
                 res.status(500).send(error);
+                return;
             }
         }
     );
 });
 
 router.all('/play', function(req, res, next){
+    console.log('pedido de play');
     request.get('http://127.0.0.1:8080/requests/status.xml?command=pl_play', function(error,response,body){
-        res.status(200);
+        res.status(200).send('');
     });
 });
 
 router.all('/pause', function(req, res, next){
+    console.log('pedido de pause');
     request.get('http://127.0.0.1:8080/requests/status.xml?command=pl_pause', function(error,response,body){
-        res.status(200);
+        res.status(200).send('');
     });
 });
 
 router.all('/stop', function(req, res, next){
+    console.log('pedido de stop');
     request.get('http://127.0.0.1:8080/requests/status.xml?command=pl_stop', function(error,response,body){
-        res.status(200);
+        res.status(200).send('');
     });
 });
 
