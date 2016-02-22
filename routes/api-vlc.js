@@ -13,6 +13,19 @@ var request = r.defaults({
     }
 });
 
+router.all('/volume', function(req,res,next){
+    var volume = req.body.volume || req.query.volume;
+    if (volume){
+        request.get('http://127.0.0.1:8080/requests/playlist.json?command=volume&val=' + volume, function(error,response,body){
+           if(!error){
+               res.status(200).end();
+           } else{
+               res.status(500).end('Não foi possivel mudar o volume.');
+           }
+        });
+    }
+});
+
 router.all('/playlist', function(req, res, next){
     request.get('http://127.0.0.1:8080/requests/playlist.json', function(error,response,body){
         if(error){

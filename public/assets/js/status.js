@@ -1,5 +1,12 @@
-
 $(document).ready(function () {
+    $(document).keypress(function(event){
+        if ( event.which == 43 ){
+            $.get('/api-vlc/volume',{volume:'+5'});
+        }
+        if ( event.which == 45 ){
+            $.get('/api-vlc/volume',{volume:'-5'});
+        }
+    })
     $('a[href="#playlist"]').click(function () {
         $.get('/api-vlc/playlist')
             .done(function (data) {
@@ -64,7 +71,7 @@ $(document).ready(function () {
             })
             .fail(function(data){
             });
-        setTimeout(getStatus,960);
+        setTimeout(getStatus,975);
     }
     getStatus();
 });
