@@ -488,10 +488,6 @@ var $ = jQuery[_0x2dae[0]]();
                 } else {
                     if (_bg_style_desktop == 9 || (_bg_style_desktop == 10 || _bg_style_desktop == 11)) {
                         size();
-                    } else {
-                        if (_bg_style_desktop == 12 || (_bg_style_desktop == 13 || _bg_style_desktop == 14)) {
-                            createTable();
-                        }
                     }
                 }
             }
@@ -586,33 +582,7 @@ var $ = jQuery[_0x2dae[0]]();
             }
         }
     }
-    /**
-     * @return {undefined}
-     */
-    function createTable() {
-        var emptyJ = $(_0x2dae[136]);
-        var $src = $(_0x2dae[145]);
-        $spy[_0x2dae[21]](_0x2dae[155]);
-        if (_bg_style_desktop == 12 || _bg_style_desktop == 14) {
-            emptyJ[_0x2dae[42]](_0x2dae[156], _0x2dae[157]);
-            emptyJ.YTPlayer();
-        } else {
-            emptyJ[_0x2dae[42]](_0x2dae[156], _0x2dae[158]);
-            emptyJ.YTPlayer();
-            $spy[_0x2dae[21]](_0x2dae[153]);
-            $src[_0x2dae[26]](_0x2dae[24], function() {
-                if ($spy[_0x2dae[19]](_0x2dae[153])) {
-                    emptyJ.YTPMute();
-                    $spy[_0x2dae[31]](_0x2dae[153])[_0x2dae[21]](_0x2dae[154]);
-                } else {
-                    if ($spy[_0x2dae[19]](_0x2dae[154])) {
-                        emptyJ.YTPUnmute();
-                        $spy[_0x2dae[31]](_0x2dae[154])[_0x2dae[21]](_0x2dae[153]);
-                    }
-                }
-            });
-        }
-    }
+
     /**
      * @return {undefined}
      */

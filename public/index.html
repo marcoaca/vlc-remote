@@ -1,220 +1,222 @@
 <!DOCTYPE html>
-<!--[if IE 9 ]><html class="ie ie9 no-js" lang="en"><![endif]-->
+<!--[if IE 9 ]>
+<html class="ie ie9 no-js" lang="en"><![endif]-->
 <!--[if gt IE 9 | !IE]><!-->
 <html class="no-js" lang="en">
 <!--<![endif]-->
 
 <head>
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>IZ Player</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-  <meta name="author" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link rel='stylesheet' href='assets/css/bootstrap.min.css'>               <!-- bootstrap -->
-  <link rel='stylesheet' href='assets/css/vendor.css'>                      <!-- plugin -->
-  <link rel='stylesheet' href='assets/css/theme_black_red.css' id="theme"> <!-- main style -->
-  <link rel='stylesheet' href='assets/css/custom.css'>                      <!-- custom style -->
-  <link rel='stylesheet' href='assets/css/demo.css'>                        <!-- demo style -->
-  <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>IZ Player</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel='stylesheet' href='assets/css/bootstrap.min.css'>               <!-- bootstrap -->
+    <link rel='stylesheet' href='assets/css/vendor.css'>                      <!-- plugin -->
+    <link rel='stylesheet' href='assets/css/theme_black_red.css' id="theme"> <!-- main style -->
+    <link rel='stylesheet' href='assets/css/custom.css'>                      <!-- custom style -->
+    <link rel='stylesheet' href='assets/css/demo.css'>                        <!-- demo style -->
+    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
 <!-- to edit the animation, please read documentation <animation> section -->
 
 <body>
 
-  <!-- site loader -->
-  <div class="site-loader">
+<!-- site loader -->
+<div class="site-loader">
     <span></span>
     <p>IZ Player</p> <!-- site loader text -->
-  </div>
-  <!-- site loader -->
+</div>
+<!-- site loader -->
 
-  <!-- site bg -->
-  <div class="site-bg">
+<!-- site bg -->
+<div class="site-bg">
     <div class="site-bg__img"></div>
     <div class="site-bg__overlay"></div>
     <div class="site-bg__effect"></div>
     <canvas class="site-bg__canvas"></canvas>
-  </div>
-  <!-- /site bg -->
+</div>
+<!-- /site bg -->
 
-  <!-- site wrap -->
-  <div class="site-wrap">
+<!-- site wrap -->
+<div class="site-wrap">
     <!-- site header -->
     <header class="site-header">
-      <div class="container">
-        <!-- site header logo -->
-        <div class="site-header__logo">
-          <a class="_dark" href="#">
-            <img class="_red" src="assets/img/site_header_logo_red_dark.png" alt="">
-          </a>
-        </div>
-        <!-- site header logo -->
+        <div class="container">
+            <!-- site header logo -->
+            <div class="site-header__logo">
+                <a class="_dark" href="#">
+                    <img class="_red" src="assets/img/site_header_logo_red_dark.png" alt="">
+                </a>
+            </div>
+            <!-- site header logo -->
 
-        <!-- site header icon -->
-        <ul class="site-header__icon">
-          <!-- audio icon -->
-          <li class="site-header__icon__audio">
-            <a href="#">
-              <i class="audio-bar">
-                <span class="audio-bar__item"></span>
-                <span class="audio-bar__item"></span>
-                <span class="audio-bar__item"></span>
-                <span class="audio-bar__item"></span>
-              </i>
-            </a>
-          </li>
-          <!-- /audio icon -->
-        </ul>
-        <!-- /site header icon -->
-      </div>
+            <!-- site header icon -->
+            <ul class="site-header__icon">
+                <!-- audio icon -->
+                <li class="site-header__icon__audio">
+                    <a href="#">
+                        <i class="audio-bar">
+                            <span class="audio-bar__item"></span>
+                            <span class="audio-bar__item"></span>
+                            <span class="audio-bar__item"></span>
+                            <span class="audio-bar__item"></span>
+                        </i>
+                    </a>
+                </li>
+                <!-- /audio icon -->
+            </ul>
+            <!-- /site header icon -->
+        </div>
     </header>
     <!-- /site header -->
 
     <!-- site main -->
     <main class="site-main">
-      <!-- home -->
-      <div id="home" class="section is-active">
-        <div class="section__table">
-          <div class="section__cell">
-            <div class="container-fluid max-width">
-              <div class="row">
-                <div class="col-xs-12">
-                  <div class="overflow-hidden">
-                    <div class="animation-item"
-                    data-animation-in="fadeInUp2"
-                    data-animation-in-delay="300"
-                    data-animation-out="fadeOutDown2"
-                    data-animation-out-delay="700">
-                      <h1 class="section__title">
-                        <span id="nome_artista"></span>&nbsp;<span class="color" id="nome_musica"></span>
-                      </h1>
-                      <p class="section__caption">Powered by IZPlayer</p>
-                    </div>
-                  </div>
-                  <div class="overflow-hidden">
-                    <div class="animation-item"
-                    data-animation-in="fadeInDown"
-                    data-animation-in-delay="900"
-                    data-animation-out="fadeOutDown"
-                    data-animation-out-delay="300">
-                      <!-- countdown -->
-                        <div class="row" id="countdown_dashboard">
-                            <div class="col-xs-2"></div>
-                            <div class="col-xs-2"></div>
-                            <div class="col-xs-2">
-                                <div id="minutes_digit" class="digit"></div>
-                                <span class="dash_title">minutes</span>
-                            </div>
-                            <div class="col-xs-2">
-                                <div id="seconds_digit" class="digit"></div>
-                                <span class="dash_title">seconds</span>
+        <!-- home -->
+        <div id="home" class="section is-active">
+            <div class="section__table">
+                <div class="section__cell">
+                    <div class="container-fluid max-width">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="overflow-hidden">
+                                    <div class="animation-item"
+                                         data-animation-in="fadeInUp2"
+                                         data-animation-in-delay="300"
+                                         data-animation-out="fadeOutDown2"
+                                         data-animation-out-delay="700">
+                                        <h1 class="section__title">
+                                            <span id="nome_artista"></span>&nbsp;<span class="color"
+                                                                                       id="nome_musica"></span>
+                                        </h1>
+                                        <p class="section__caption">Powered by IZPlayer</p>
+                                    </div>
+                                </div>
+                                <div class="overflow-hidden">
+                                    <div class="animation-item"
+                                         data-animation-in="fadeInDown"
+                                         data-animation-in-delay="900"
+                                         data-animation-out="fadeOutDown"
+                                         data-animation-out-delay="300">
+                                        <!-- countdown -->
+                                        <div class="row" id="countdown_dashboard">
+                                            <div class="col-xs-2"></div>
+                                            <div class="col-xs-2"></div>
+                                            <div class="col-xs-2">
+                                                <div id="minutes_digit" class="digit"></div>
+                                                <span class="dash_title">minutes</span>
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <div id="seconds_digit" class="digit"></div>
+                                                <span class="dash_title">seconds</span>
+                                            </div>
+                                        </div>
+                                        <!-- /countdown -->
+                                    </div>
+                                </div>
+                                <div class="overflow-hidden">
+                                    <div class="animation-item"
+                                         data-animation-in="fadeInUp2"
+                                         data-animation-in-delay="1100"
+                                         data-animation-out="fadeOutDown2"
+                                         data-animation-out-delay="100">
+                                        <div class="btn-wrap">
+                                            <a class="btn btn-theme _icon _circle" href="#newsletter">
+                                                <i class="ion-music-note"></i>
+                                                Adicionar Música
+                                            </a>
+                                            <a class="btn btn-base _icon _circle" href="#playlist">
+                                                <i class="ion-android-hangout"></i>
+                                                Playlist
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                      <!-- /countdown -->
                     </div>
-                  </div>
-                  <div class="overflow-hidden">
-                    <div class="animation-item"
-                    data-animation-in="fadeInUp2"
-                    data-animation-in-delay="1100"
-                    data-animation-out="fadeOutDown2"
-                    data-animation-out-delay="100">
-                      <div class="btn-wrap">
-                        <a class="btn btn-theme _icon _circle" href="#newsletter">
-                          <i class="ion-music-note"></i>
-                          Adicionar Música
-                        </a>
-                        <a class="btn btn-base _icon _circle" href="#playlist">
-                          <i class="ion-android-hangout"></i>
-                          Playlist
-                        </a>
-                      </div>
-                    </div>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
-        </div>
-        <!-- newsletter -->
-        <div id="newsletter" class="mfp-hide">
-          <div class="newsletter-overlay"></div>
-          <form class="form-theme" id="formNewsletter" action="/api-vlc/add">
-            <h3 class="form-title">Adicionar música a <span class="color">playlist</span></h3> <!-- title -->
-            <p class="form-subtitle">Show us your style!</p> <!-- subtitle -->
-            <div class="hr"></div> <!-- line -->
-            <p class="form-caption">Inserir apenas links <b>directos</b>, para a música.</p> <!-- caption -->
-            <div class="form-group">
-              <label class="form-label" for="newsletterEmail">Link</label> <!-- label -->
-              <input class="form-control" id="newsletterEmail" type="text" name="music" required> <!-- input -->
+            <!-- newsletter -->
+            <div id="newsletter" class="mfp-hide">
+                <div class="newsletter-overlay"></div>
+                <form class="form-theme" id="formNewsletter" action="/api-vlc/add">
+                    <h3 class="form-title">Adicionar música a <span class="color">playlist</span></h3> <!-- title -->
+                    <p class="form-subtitle">Show us your style!</p> <!-- subtitle -->
+                    <div class="hr"></div> <!-- line -->
+                    <p class="form-caption">Inserir apenas links <b>directos</b>, para a música.</p> <!-- caption -->
+                    <div class="form-group">
+                        <label class="form-label" for="newsletterEmail">Link</label> <!-- label -->
+                        <input class="form-control" id="newsletterEmail" type="text" name="music" required>
+                    </div>
+                    <button class="btn btn-theme btn-block _circle" type="submit">
+                        Adicionar
+                    </button> <!-- button -->
+                    <div class="form-notify"></div> <!-- notify -->
+                </form>
             </div>
-            <button class="btn btn-theme btn-block _circle" type="submit">
-              Adicionar
-            </button> <!-- button -->
-            <div class="form-notify"></div> <!-- notify -->
-          </form>
-        </div>
-        <!-- /newsletter -->
-        <!-- playlist -->
-        <div id="playlist" class="mfp-hide">
-          <div class="newsletter-overlay"></div>
-          <form class="form-theme" id="formPlaylist">
-            <h3 class="form-title">Play <span class="color">List</span></h3> <!-- title -->
-            <p class="form-subtitle"></p> <!-- subtitle -->
-            <div class="hr"></div> <!-- line -->
-            <div id="list">
-              <ul id="lista">
-              </ul>
+            <!-- /newsletter -->
+            <!-- playlist -->
+            <div id="playlist" class="mfp-hide">
+                <div class="newsletter-overlay"></div>
+                <form class="form-theme" id="formPlaylist">
+                    <h3 class="form-title">Play <span class="color">List</span></h3> <!-- title -->
+                    <p class="form-subtitle"></p> <!-- subtitle -->
+                    <div class="hr"></div> <!-- line -->
+                    <div id="list">
+                        <ul id="lista">
+                        </ul>
+                    </div>
+                </form>
             </div>
-          </form>
+            <!-- /playlist -->
         </div>
-        <!-- /playlist -->
-      </div>
-      <!-- /home -->
+        <!-- /home -->
     </main>
     <!-- /site main -->
 
     <!-- site footer -->
     <footer class="site-footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="site-footer__inner">
-              <!-- copyright -->
-              <p class="site-footer__copyright">
-                2016 @ <a href="#" target="_blank">Marco Amaral, João Leite</a> | All rights Reserved.
-              </p>
-              <!-- /copyright -->
-              <!-- social -->
-              <ul class="site-footer__social">
-                <li><a href="https://www.facebook.com/" target="_blank">Facebook</a></li>
-                <li><a href="https://twitter.com/" target="_blank">Twitter</a></li>
-                <li><a href="https://instagram.com/" target="_blank">Instagram</a></li>
-                <li><a href="https://www.linkedin.com/" target="_blank">LinkedIn</a></li>
-              </ul>
-              <!-- /social -->
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="site-footer__inner">
+                        <!-- copyright -->
+                        <p class="site-footer__copyright">
+                            2016 @ <a href="#" target="_blank">Marco Amaral, João Leite</a> | All rights Reserved.
+                        </p>
+                        <!-- /copyright -->
+                        <!-- social -->
+                        <ul class="site-footer__social">
+                            <li><a href="https://www.facebook.com/" target="_blank">Facebook</a></li>
+                            <li><a href="https://twitter.com/" target="_blank">Twitter</a></li>
+                            <li><a href="https://instagram.com/" target="_blank">Instagram</a></li>
+                            <li><a href="https://www.linkedin.com/" target="_blank">LinkedIn</a></li>
+                        </ul>
+                        <!-- /social -->
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </footer>
     <!-- /site footer -->
-  </div>
-  <!-- /site wrap -->
+</div>
+<!-- /site wrap -->
 
-  <!-- script -->
-  <script src="assets/js/vendor/jquery-2.1.4.min.js"></script>
-  <script src='assets/js/status.js'></script>
-  <script src='assets/js/vendor/bootstrap.min.js'></script>
-  <script src='assets/js/vendor/plugin.js'></script>
-  <script src='assets/js/variable.js'></script>
-  <script src='assets/js/main.js'></script>
-  <script src='assets/js/demo.js'></script>
-  <!-- /script -->
+<!-- script -->
+<script src="assets/js/vendor/jquery-2.1.4.min.js"></script>
+<script src='assets/js/status.js'></script>
+<script src='assets/js/vendor/bootstrap.min.js'></script>
+<script src='assets/js/vendor/plugin.js'></script>
+<script src='assets/js/variable.js'></script>
+<script src='assets/js/main.js'></script>
+<script src='assets/js/demo.js'></script>
+<!-- /script -->
 
 </body>
 </html>
