@@ -472,24 +472,10 @@ var $ = jQuery[_0x2dae[0]]();
         if (_0x7cd2x8) {
             if (_bg_style_mobile == 3 || _bg_style_mobile == 4) {
                 setupTreeTable();
-            } else {
-                if (_bg_style_mobile == 5 || (_bg_style_mobile == 6 || (_bg_style_mobile == 7 || _bg_style_mobile == 8))) {
-                    $(window)[_0x2dae[26]](_0x2dae[135], function() {
-                        runTest();
-                    });
-                }
             }
         } else {
             if (_bg_style_desktop == 3 || _bg_style_desktop == 4) {
                 setupTreeTable();
-            } else {
-                if (_bg_style_desktop == 5 || (_bg_style_desktop == 6 || (_bg_style_desktop == 7 || _bg_style_desktop == 8))) {
-                    runTest();
-                } else {
-                    if (_bg_style_desktop == 9 || (_bg_style_desktop == 10 || _bg_style_desktop == 11)) {
-                        size();
-                    }
-                }
             }
         }
     }
@@ -499,88 +485,6 @@ var $ = jQuery[_0x2dae[0]]();
     function setupTreeTable() {
         $(_0x2dae[136])[_0x2dae[39]]();
         $spy[_0x2dae[21]](_0x2dae[137]);
-    }
-    /**
-     * @return {undefined}
-     */
-    function runTest() {
-        /**
-         * @return {undefined}
-         */
-        function testRE() {
-            emptyJ[_0x2dae[143]]({
-                fullscreen : true,
-                duration : _bg_slideshow_duration,
-                fadeInDuration : 1500
-            });
-        }
-        /**
-         * @return {undefined}
-         */
-        function fn() {
-            emptyJ[_0x2dae[144]]({
-                fullscreen : true,
-                duration : _bg_slideshow_duration,
-                fadeInDuration : 1500
-            });
-        }
-        var emptyJ = $(_0x2dae[138]);
-        $(_0x2dae[136])[_0x2dae[39]]();
-        $spy[_0x2dae[21]](_0x2dae[139]);
-        /** @type {number} */
-        var seconds = 1;
-        for (;seconds <= _bg_slideshow_image_amount;seconds++) {
-            emptyJ[_0x2dae[142]](_0x2dae[140] + (seconds < 10 ? _0x2dae[72] + seconds : seconds) + _0x2dae[141]);
-        }
-        if (_0x7cd2x8) {
-            if (_bg_style_mobile == 5 || _bg_style_mobile == 6) {
-                testRE();
-            } else {
-                if (_bg_style_mobile == 7 || _bg_style_mobile == 8) {
-                    fn();
-                }
-            }
-        } else {
-            if (_bg_style_desktop == 5 || _bg_style_desktop == 6) {
-                testRE();
-            } else {
-                if (_bg_style_desktop == 7 || _bg_style_desktop == 8) {
-                    fn();
-                }
-            }
-        }
-    }
-    /**
-     * @return {undefined}
-     */
-    function size() {
-        var $src = $(_0x2dae[136]);
-        var emptyJ = $(_0x2dae[145]);
-        $spy[_0x2dae[21]](_0x2dae[146]);
-        $src[_0x2dae[142]](_0x2dae[147] + _0x2dae[148] + _0x2dae[149]);
-        var _0x7cd2x39 = document[_0x2dae[151]](_0x2dae[150]);
-        if (_bg_style_desktop == 9) {
-            /** @type {boolean} */
-            _0x7cd2x39[_0x2dae[152]] = true;
-            emptyJ[_0x2dae[39]]();
-        } else {
-            if (_bg_style_desktop == 10) {
-                $spy[_0x2dae[21]](_0x2dae[153]);
-                emptyJ[_0x2dae[26]](_0x2dae[24], function() {
-                    if ($spy[_0x2dae[19]](_0x2dae[153])) {
-                        /** @type {boolean} */
-                        _0x7cd2x39[_0x2dae[152]] = true;
-                        $spy[_0x2dae[31]](_0x2dae[153])[_0x2dae[21]](_0x2dae[154]);
-                    } else {
-                        if ($spy[_0x2dae[19]](_0x2dae[154])) {
-                            /** @type {boolean} */
-                            _0x7cd2x39[_0x2dae[152]] = false;
-                            $spy[_0x2dae[31]](_0x2dae[154])[_0x2dae[21]](_0x2dae[153]);
-                        }
-                    }
-                });
-            }
-        }
     }
 
     /**
