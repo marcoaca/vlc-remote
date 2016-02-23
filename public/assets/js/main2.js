@@ -20,13 +20,13 @@ var $ = jQuery[noConflict]();
                 $spy[addClass](countdown-on);
                 emptyJ[countDown]({
                     targetDate : {
-                        "day" : _countdown_date[2],
-                        "month" : _countdown_date[1],
-                        "year" : _countdown_date[0],
+                        "day" : 0,
+                        "month" : 0,
+                        "year" : 0,
                         "hour" : 0,
                         "min" : 0,
                         "sec" : 0,
-                        "utc" : _countdown_utc
+                        "utc" : false
                     },
                     omitWeeks : true
                 });
