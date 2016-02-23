@@ -64,14 +64,14 @@ router.all('/add', function (req, res, next) {
                     if (result.root.currentplid[0] >-1) {
                         request.get('http://127.0.0.1:8080/requests/status.xml?command=in_enqueue&input=' + m,
                             function (error, response, body) {
-                                res.status(200).json({code:"0",message:"Music insert with success"});
+                                res.status(200).json({code:"0",message:"Music inserted with success"});
                                 return;
                             }
                         );
                     } else {
                         request.get('http://127.0.0.1:8080/requests/status.xml?command=in_play&input=' + m,
                             function (error, response, body) {
-                                res.status(200).json({code:"0",message:"Music insert with success"});
+                                res.status(200).json({code:"0",message:"Music inserted with success"});
                                 return;
                             }
                         );
