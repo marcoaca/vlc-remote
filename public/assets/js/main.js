@@ -20,13 +20,13 @@ var $ = jQuery[_0x2dae[0]]();
                 $spy[_0x2dae[21]](_0x2dae[37]);
                 emptyJ[_0x2dae[38]]({
                     targetDate : {
-                        "day" : _countdown_date[2],
-                        "month" : _countdown_date[1],
-                        "year" : _countdown_date[0],
+                        "day" : 0,
+                        "month" : 0,
+                        "year" : 0,
                         "hour" : 0,
                         "min" : 0,
                         "sec" : 0,
-                        "utc" : _countdown_utc
+                        "utc" : false
                     },
                     omitWeeks : true
                 });
@@ -528,36 +528,7 @@ var $ = jQuery[_0x2dae[0]]();
      * @return {undefined}
      */
     function reset() {
-        if (_bg_effect == 0) {
-            $(_0x2dae[165])[_0x2dae[39]]();
-        } else {
-            if (_bg_effect == 1) {
-                focus();
-            } else {
-                if (_bg_effect == 2) {
-                    handler();
-                } else {
-                    if (_bg_effect == 3) {
-                        find();
-                    }
-                }
-            }
-        }
-    }
-    /**
-     * @return {undefined}
-     */
-    function focus() {
-        var emptyJ = $(_0x2dae[166]);
-        $(_0x2dae[165])[_0x2dae[39]]();
-        emptyJ[_0x2dae[57]](_0x2dae[167], _cloud_opacity);
-        if (emptyJ[_0x2dae[36]]) {
-            emptyJ[_0x2dae[142]](_0x2dae[168] + _0x2dae[169] + _0x2dae[170]);
-            $spy[_0x2dae[21]](_0x2dae[171]);
-            fn();
-            done();
-            show();
-        }
+        find();
     }
     /**
      * @return {undefined}
@@ -640,32 +611,7 @@ var $ = jQuery[_0x2dae[0]]();
             }
         });
     }
-    /**
-     * @return {undefined}
-     */
-    function handler() {
-        var duration = $(_0x2dae[166]);
-        $(_0x2dae[165])[_0x2dae[39]]();
-        duration[_0x2dae[57]](_0x2dae[167], 0);
-        if (duration[_0x2dae[36]]) {
-            duration[_0x2dae[142]](_0x2dae[178] + _0x2dae[179] + _0x2dae[180]);
-            $spy[_0x2dae[21]](_0x2dae[181]);
-            callback();
-            hide();
-            fix();
-            $(window)[_0x2dae[26]](_0x2dae[135], function() {
-                setTimeout(function() {
-                    duration[_0x2dae[65]]({
-                        translateZ : _0x2dae[72],
-                        opacity : [_parallax_star_opacity, _0x2dae[72]]
-                    }, {
-                        display : _0x2dae[182],
-                        duration : 3E3
-                    });
-                }, 2E3);
-            });
-        }
-    }
+
     /**
      * @return {undefined}
      */

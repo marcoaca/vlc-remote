@@ -20,13 +20,13 @@ var $ = jQuery[noConflict]();
                 $spy[addClass](countdown-on);
                 emptyJ[countDown]({
                     targetDate : {
-                        "day" : _countdown_date[2],
-                        "month" : _countdown_date[1],
-                        "year" : _countdown_date[0],
+                        "day" : 0,
+                        "month" : 0,
+                        "year" : 0,
                         "hour" : 0,
                         "min" : 0,
                         "sec" : 0,
-                        "utc" : _countdown_utc
+                        "utc" : false
                     },
                     omitWeeks : true
                 });
@@ -472,28 +472,10 @@ var $ = jQuery[noConflict]();
         if (_0x7cd2x8) {
             if (_bg_style_mobile == 3 || _bg_style_mobile == 4) {
                 setupTreeTable();
-            } else {
-                if (_bg_style_mobile == 5 || (_bg_style_mobile == 6 || (_bg_style_mobile == 7 || _bg_style_mobile == 8))) {
-                    $(window)[on](load, function() {
-                        runTest();
-                    });
-                }
             }
         } else {
             if (_bg_style_desktop == 3 || _bg_style_desktop == 4) {
                 setupTreeTable();
-            } else {
-                if (_bg_style_desktop == 5 || (_bg_style_desktop == 6 || (_bg_style_desktop == 7 || _bg_style_desktop == 8))) {
-                    runTest();
-                } else {
-                    if (_bg_style_desktop == 9 || (_bg_style_desktop == 10 || _bg_style_desktop == 11)) {
-                        size();
-                    } else {
-                        if (_bg_style_desktop == 12 || (_bg_style_desktop == 13 || _bg_style_desktop == 14)) {
-                            createTable();
-                        }
-                    }
-                }
             }
         }
     }
@@ -504,115 +486,7 @@ var $ = jQuery[noConflict]();
         $('.site-bg__video')[remove]();
         $spy[addClass](is-site-bg-img);
     }
-    /**
-     * @return {undefined}
-     */
-    function runTest() {
-        /**
-         * @return {undefined}
-         */
-        function testRE() {
-            emptyJ[ss]({
-                fullscreen : true,
-                duration : _bg_slideshow_duration,
-                fadeInDuration : 1500
-            });
-        }
-        /**
-         * @return {undefined}
-         */
-        function fn() {
-            emptyJ[kenburnsy]({
-                fullscreen : true,
-                duration : _bg_slideshow_duration,
-                fadeInDuration : 1500
-            });
-        }
-        var emptyJ = $('.site-bg__img');
-        $('.site-bg__video')[remove]();
-        $spy[addClass](is-site-bg-slideshow);
-        /** @type {number} */
-        var seconds = 1;
-        for (;seconds <= _bg_slideshow_image_amount;seconds++) {
-            emptyJ[append](<img src="assets/img/bg/site-bg-slideshow- + (seconds < 10 ? 0 + seconds : seconds) + '.jpg">');
-        }
-        if (_0x7cd2x8) {
-            if (_bg_style_mobile == 5 || _bg_style_mobile == 6) {
-                testRE();
-            } else {
-                if (_bg_style_mobile == 7 || _bg_style_mobile == 8) {
-                    fn();
-                }
-            }
-        } else {
-            if (_bg_style_desktop == 5 || _bg_style_desktop == 6) {
-                testRE();
-            } else {
-                if (_bg_style_desktop == 7 || _bg_style_desktop == 8) {
-                    fn();
-                }
-            }
-        }
-    }
-    /**
-     * @return {undefined}
-     */
-    function size() {
-        var $src = $('.site-bg__video');
-        var emptyJ = $('.site-header__icon__audio');
-        $spy[addClass](is-site-bg-video);
-        $src[append](<video id="videoPlayer" autoplay loop> + <source src="assets/video/video.mp4" type="video/mp4"> + </video>);
-        var _0x7cd2x39 = document[getElementById](videoPlayer);
-        if (_bg_style_desktop == 9) {
-            /** @type {boolean} */
-            _0x7cd2x39[muted] = true;
-            emptyJ[remove]();
-        } else {
-            if (_bg_style_desktop == 10) {
-                $spy[addClass](is-audio-on);
-                emptyJ[on](click, function() {
-                    if ($spy[hasClass](is-audio-on)) {
-                        /** @type {boolean} */
-                        _0x7cd2x39[muted] = true;
-                        $spy[removeClass](is-audio-on)[addClass](is-audio-off);
-                    } else {
-                        if ($spy[hasClass](is-audio-off)) {
-                            /** @type {boolean} */
-                            _0x7cd2x39[muted] = false;
-                            $spy[removeClass](is-audio-off)[addClass](is-audio-on);
-                        }
-                    }
-                });
-            }
-        }
-    }
-    /**
-     * @return {undefined}
-     */
-    function createTable() {
-        var emptyJ = $('.site-bg__video');
-        var $src = $('.site-header__icon__audio');
-        $spy[addClass](is-site-bg-video-youtube);
-        if (_bg_style_desktop == 12 || _bg_style_desktop == 14) {
-            emptyJ[attr](data-property, {videoURL: _bg_video_youtube_url, autoPlay: true, loop: _bg_video_youtube_loop, startAt: _bg_video_youtube_start, stopAt: _bg_video_youtube_end, mute: true, quality: _bg_video_youtube_quality, realfullscreen: true, optimizeDisplay: true, addRaster: false, showYTLogo: false, showControls: false, stopMovieOnBlur: false, containment: "self"});
-            emptyJ.YTPlayer();
-        } else {
-            emptyJ[attr](data-property, {videoURL: _bg_video_youtube_url, autoPlay: true, loop: _bg_video_youtube_loop, startAt: _bg_video_youtube_start, stopAt: _bg_video_youtube_end, mute: false, quality: _bg_video_youtube_quality, realfullscreen: true, optimizeDisplay: true, addRaster: false, showYTLogo: false, showControls: false, stopMovieOnBlur: false, containment: "self"});
-            emptyJ.YTPlayer();
-            $spy[addClass](is-audio-on);
-            $src[on](click, function() {
-                if ($spy[hasClass](is-audio-on)) {
-                    emptyJ.YTPMute();
-                    $spy[removeClass](is-audio-on)[addClass](is-audio-off);
-                } else {
-                    if ($spy[hasClass](is-audio-off)) {
-                        emptyJ.YTPUnmute();
-                        $spy[removeClass](is-audio-off)[addClass](is-audio-on);
-                    }
-                }
-            });
-        }
-    }
+
     /**
      * @return {undefined}
      */
@@ -654,36 +528,7 @@ var $ = jQuery[noConflict]();
      * @return {undefined}
      */
     function reset() {
-        if (_bg_effect == 0) {
-            $('.site-bg__canvas')[remove]();
-        } else {
-            if (_bg_effect == 1) {
-                focus();
-            } else {
-                if (_bg_effect == 2) {
-                    handler();
-                } else {
-                    if (_bg_effect == 3) {
-                        find();
-                    }
-                }
-            }
-        }
-    }
-    /**
-     * @return {undefined}
-     */
-    function focus() {
-        var emptyJ = $('.site-bg__effect');
-        $('.site-bg__canvas')[remove]();
-        emptyJ[css](opacity, _cloud_opacity);
-        if (emptyJ[length]) {
-            emptyJ[append](<div class="cloud cloud-01"></div> + <div class="cloud cloud-02"></div> + <div class="cloud cloud-03"></div>);
-            $spy[addClass](is-site-bg-cloud);
-            fn();
-            done();
-            show();
-        }
+        find();
     }
     /**
      * @return {undefined}
@@ -766,32 +611,7 @@ var $ = jQuery[noConflict]();
             }
         });
     }
-    /**
-     * @return {undefined}
-     */
-    function handler() {
-        var duration = $('.site-bg__effect');
-        $('.site-bg__canvas')[remove]();
-        duration[css](opacity, 0);
-        if (duration[length]) {
-            duration[append](<div class="star star-01"></div> + <div class="star star-02"></div> + <div class="star star-03"></div>);
-            $spy[addClass](is-site-bg-parallax-star);
-            callback();
-            hide();
-            fix();
-            $(window)[on](load, function() {
-                setTimeout(function() {
-                    duration[velocity]({
-                        translateZ : 0,
-                        opacity : [_parallax_star_opacity, 0]
-                    }, {
-                        display : block,
-                        duration : 3E3
-                    });
-                }, 2E3);
-            });
-        }
-    }
+
     /**
      * @return {undefined}
      */
