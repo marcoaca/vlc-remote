@@ -52,39 +52,6 @@ var _bg_style_mobile =                  4;
                                            // 7 = slideshow (kenburn)
                                            // 8 = slideshow (kenburn, mp3 audio)
 
-// if _bg_style == 4 - 6 (slideshow)
-var _bg_slideshow_image_amount =        2; // slideshow image amount
-var _bg_slideshow_duration =            9000; // millisecond
-
-// if _bg_style == 10 - 12 (youtube video)
-var _bg_video_youtube_url =             'SJwBTUSqLa0'; // youtube video url id - https://www.youtube.com/watch?v=SJwBTUSqLa0
-
-var _bg_video_youtube_quality =         'hightres'; // hightres, hd1080, hd720, default - youtube video quality
-var _bg_video_youtube_start =           95; // seconds - video start time
-var _bg_video_youtube_end =             260; // seconds - video end time, 0 to ignored
-var _bg_video_youtube_loop =            false; // true, false - video loop
-
-//
-// background effect (cloud / star)
-// --------------------------------------------------
-//
-
-var _bg_effect =                        3; // 0 = disable, 1 = cloud, 2 = parallax star star, 3 = star
-
-//
-// if _bg_effect == 1 (cloud)
-// --------------------------------------------------
-//
-
-var _cloud_opacity =                    1; // [0.1 to 1] - cloud opacity
-
-//
-// if _bg_effect == 2 (parallax star)
-// --------------------------------------------------
-//
-
-var _parallax_star_opacity =            1; // [0.1 to 1] - parallax star opacity
-
 //
 // if _bg_effect == 3 (star)
 // --------------------------------------------------

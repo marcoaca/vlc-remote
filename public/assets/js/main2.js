@@ -528,32 +528,7 @@ var $ = jQuery[noConflict]();
      * @return {undefined}
      */
     function reset() {
-        if (_bg_effect == 0) {
-            $('.site-bg__canvas')[remove]();
-        } else {
-            if (_bg_effect == 1) {
-                focus();
-            } else {
-                if (_bg_effect == 3) {
-                    find();
-                }
-            }
-        }
-    }
-    /**
-     * @return {undefined}
-     */
-    function focus() {
-        var emptyJ = $('.site-bg__effect');
-        $('.site-bg__canvas')[remove]();
-        emptyJ[css](opacity, _cloud_opacity);
-        if (emptyJ[length]) {
-            emptyJ[append](<div class="cloud cloud-01"></div> + <div class="cloud cloud-02"></div> + <div class="cloud cloud-03"></div>);
-            $spy[addClass](is-site-bg-cloud);
-            fn();
-            done();
-            show();
-        }
+        find();
     }
     /**
      * @return {undefined}
