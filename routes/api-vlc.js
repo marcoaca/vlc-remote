@@ -64,14 +64,14 @@ router.all('/add', function (req, res, next) {
                     if (result.root.currentplid[0] >-1) {
                         request.get('http://127.0.0.1:8080/requests/status.xml?command=in_enqueue&input=' + m,
                             function (error, response, body) {
-                                res.status(200).send('');
+                                res.status(200).json({code:"0",message:"Music insert with success"});
                                 return;
                             }
                         );
                     } else {
                         request.get('http://127.0.0.1:8080/requests/status.xml?command=in_play&input=' + m,
                             function (error, response, body) {
-                                res.status(200).send('');
+                                res.status(200).json({code:"0",message:"Music insert with success"});
                                 return;
                             }
                         );
@@ -86,23 +86,20 @@ router.all('/add', function (req, res, next) {
 });
 
 router.all('/play', function(req, res, next){
-    console.log('pedido de play');
     request.get('http://127.0.0.1:8080/requests/status.xml?command=pl_play', function(error,response,body){
-        res.status(200).send('');
+        res.status(200).end();
     });
 });
 
 router.all('/pause', function(req, res, next){
-    console.log('pedido de pause');
     request.get('http://127.0.0.1:8080/requests/status.xml?command=pl_pause', function(error,response,body){
-        res.status(200).send('');
+        res.status(200).end();
     });
 });
 
 router.all('/stop', function(req, res, next){
-    console.log('pedido de stop');
     request.get('http://127.0.0.1:8080/requests/status.xml?command=pl_stop', function(error,response,body){
-        res.status(200).send('');
+        res.status(200).end();
     });
 });
 
