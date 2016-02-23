@@ -52,7 +52,7 @@ router.all('/add', function (req, res, next) {
         res.status(500).json({error: 'Missing song link argument.'});
         return;
     }
-    request.get('http://127.0.0.1:8080/requests/status.xml',
+    request.get('http://127.0.0.1:8080/requests/status.json',
         function (error, response, body) {
             if (error) {
                 console.log(error);
@@ -60,23 +60,22 @@ router.all('/add', function (req, res, next) {
                 return;
             }
             if (!error && response.statusCode == 200) {
-                parseString(body, function (err, result) {
-                    if (result.root.currentplid[0] > -1) {
-                        request.get('http://127.0.0.1:8080/requests/status.xml?command=in_enqueue&input=' + m,
-                            function (error, response, body) {
-                                res.status(200).json({code: "0", message: "Music inserted with success"});
-                                return;
-                            }
-                        );
-                    } else {
-                        request.get('http://127.0.0.1:8080/requests/status.xml?command=in_play&input=' + m,
-                            function (error, response, body) {
-                                res.status(200).json({code: "0", message: "Music inserted with success"});
-                                return;
-                            }
-                        );
-                    }
-                });
+                var result = JSON.parse(body);
+                if (result.currentplid > -1) {
+                    request.get('http://127.0.0.1:8080/requests/status.xml?command=in_enqueue&input=' + m,
+                        function (error, response, body) {
+                            res.status(200).json({code: "0", message: "Music inserted with success."});
+                            return;
+                        }
+                    );
+                } else {
+                    request.get('http://127.0.0.1:8080/requests/status.xml?command=in_play&input=' + m,
+                        function (error, response, body) {
+                            res.status(200).json({code: "0", message: "Music inserted with success."});
+                            return;
+                        }
+                    );
+                }
             } else {
                 res.status(500).send(error);
                 return;
