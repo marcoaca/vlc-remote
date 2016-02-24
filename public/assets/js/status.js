@@ -62,7 +62,6 @@ $(document).ready(function () {
                 var obj = JSON.parse(data);
                 var html = '<ul>';
                 var template = "<li><span>%music%</span><span class='color'>%time%</span></li>";
-
                 obj.children[0].children.forEach(function (element, index, array) {
                     var time = element.duration;
                     var time_text = '';

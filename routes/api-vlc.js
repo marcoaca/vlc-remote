@@ -25,13 +25,32 @@ router.all('/volume', function (req, res, next) {
     }
 });
 
+function removeMusic(music_id){
+    request.get('http://127.0.0.1:8080/requests/playlist.json?command=pl_delete&id=' + music_id, function (error, response, body) {
+        if (error) {
+            res.status(500).json({error: error});
+            return;
+        }
+    });
+}
+
 router.all('/playlist', function (req, res, next) {
     request.get('http://127.0.0.1:8080/requests/playlist.json', function (error, response, body) {
         if (error) {
             res.status(500).json({error: error});
             return;
         }
-        res.status(200).json(body);
+        playlist = JSON.parse(body);
+        for (var i = 0; i < playlist.children[0].children.length; i++) {
+            if (!playlist.children[0].children[i].current) {
+                removeMusic(playlist.children[0].children[i].id);
+            } else {
+                break;
+            }
+        }
+        request.get('http://127.0.0.1:8080/requests/playlist.json', function (error, response, body) {
+            res.status(200).json(body);
+        });
     });
 });
 
