@@ -15,24 +15,20 @@ var $ = jQuery[_0x2dae[0]]();
      */
     function shim() {
         var emptyJ = $(_0x2dae[35]);
-        if (_countdown) {
-            if (emptyJ[_0x2dae[36]]) {
-                $spy[_0x2dae[21]](_0x2dae[37]);
-                emptyJ[_0x2dae[38]]({
-                    targetDate : {
-                        "day" : 0,
-                        "month" : 0,
-                        "year" : 0,
-                        "hour" : 0,
-                        "min" : 0,
-                        "sec" : 0,
-                        "utc" : false
-                    },
-                    omitWeeks : true
-                });
-            }
-        } else {
-            emptyJ[_0x2dae[39]]();
+        if (emptyJ[_0x2dae[36]]) {
+            $spy[_0x2dae[21]](_0x2dae[37]);
+            emptyJ[_0x2dae[38]]({
+                targetDate : {
+                    "day" : 0,
+                    "month" : 0,
+                    "year" : 0,
+                    "hour" : 0,
+                    "min" : 0,
+                    "sec" : 0,
+                    "utc" : false
+                },
+                omitWeeks : true
+            });
         }
     }
     /**
@@ -1011,9 +1007,6 @@ var $ = jQuery[_0x2dae[0]]();
         dataAndEvents[_0x2dae[25]]();
     });
     $(_0x2dae[33])[_0x2dae[32]]()[_0x2dae[31]](_0x2dae[30])[_0x2dae[21]](_0x2dae[29])[_0x2dae[28]](_0x2dae[7]);
-    if (_site_border) {
-        $spy[_0x2dae[21]](_0x2dae[34]);
-    }
     shim();
     domReady();
     run();

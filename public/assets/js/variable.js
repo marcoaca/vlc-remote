@@ -3,20 +3,6 @@
  * -------------------------------------------------- */
 
 //
-// countdown
-// --------------------------------------------------
-//
-
-var _countdown =                        true; // [true, false] - countdown toggle
-
-//
-// border - header bottom and footer top
-// --------------------------------------------------
-//
-
-var _site_border =                      true; // [true, false] - border toggle
-
-//
 // background
 // --------------------------------------------------
 // choose background version for each desktop and mobile :)

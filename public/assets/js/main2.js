@@ -15,24 +15,20 @@ var $ = jQuery[noConflict]();
      */
     function shim() {
         var emptyJ = $('#countdown_dashboard');
-        if (_countdown) {
-            if (emptyJ[length]) {
-                $spy[addClass](countdown-on);
-                emptyJ[countDown]({
-                    targetDate : {
-                        "day" : 0,
-                        "month" : 0,
-                        "year" : 0,
-                        "hour" : 0,
-                        "min" : 0,
-                        "sec" : 0,
-                        "utc" : false
-                    },
-                    omitWeeks : true
-                });
-            }
-        } else {
-            emptyJ[remove]();
+        if (emptyJ[length]) {
+            $spy[addClass](countdown-on);
+            emptyJ[countDown]({
+                targetDate : {
+                    "day" : 0,
+                    "month" : 0,
+                    "year" : 0,
+                    "hour" : 0,
+                    "min" : 0,
+                    "sec" : 0,
+                    "utc" : false
+                },
+                omitWeeks : true
+            });
         }
     }
     /**
@@ -1011,9 +1007,6 @@ var $ = jQuery[noConflict]();
         dataAndEvents[preventDefault]();
     });
     $('.site-footer__social')[clone]()[removeClass](site-footer__social)[addClass](site-nav__social)[insertAfter]('.site-nav__menu');
-    if (_site_border) {
-        $spy[addClass](border-on);
-    }
     shim();
     domReady();
     run();
