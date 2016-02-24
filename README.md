@@ -1,7 +1,8 @@
-# vlc-remote
+# Remote VLC
 
-First:
-nmp install
+# First:
+npm install
+npm install nodemon
 
-Second:
+# Second:
 node ./bin/www
