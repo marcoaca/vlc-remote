@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var r = require("request");
-var parseString = require('xml2js').parseString;
 
 var vlcPassword = 'password';
 
@@ -47,36 +46,24 @@ router.all('/status', function (req, res, next) {
 });
 
 router.all('/add', function (req, res, next) {
-    var m = req.query.music ? encodeURIComponent(req.query.music) : req.body.music ? encodeURIComponent(req.body.music) : null;
+    var m = encodeURIComponent( req.body.music || req.query.music );
     if (!m) {
         res.status(500).json({error: 'Missing song link argument.'});
         return;
     }
     request.get('http://127.0.0.1:8080/requests/status.json',
         function (error, response, body) {
-            if (error) {
-                console.log(error);
-                res.send(error);
-                return;
-            }
             if (!error && response.statusCode == 200) {
                 var result = JSON.parse(body);
-                if (result.currentplid > -1) {
-                    request.get('http://127.0.0.1:8080/requests/status.xml?command=in_enqueue&input=' + m,
-                        function (error, response, body) {
-                            res.status(200).json({code: "0", message: "Music inserted with success."});
-                            return;
-                        }
-                    );
-                } else {
-                    request.get('http://127.0.0.1:8080/requests/status.xml?command=in_play&input=' + m,
-                        function (error, response, body) {
-                            res.status(200).json({code: "0", message: "Music inserted with success."});
-                            return;
-                        }
-                    );
-                }
+                var command = result.currentplid > -1 ? 'in_enqueue&input='+m:'in_play&input='+m ;
+                request.get('http://127.0.0.1:8080/requests/status.json?command=' + command,
+                    function (error, response, body) {
+                        res.status(200).json({code: "0", message: "Music inserted with success."});
+                        return;
+                    }
+                );
             } else {
+                console.log(error);
                 res.status(500).send(error);
                 return;
             }
