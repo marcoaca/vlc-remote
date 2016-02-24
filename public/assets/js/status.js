@@ -60,7 +60,7 @@ $(document).ready(function () {
         $.get('/api-vlc/playlist')
             .done(function (data) {
                 var obj = JSON.parse(data);
-                var html = '';
+                var html = '<ul>';
                 var template = "<li><span>%music%</span><span class='color'>%time%</span></li>";
 
                 obj.children[0].children.forEach(function (element, index, array) {
@@ -73,7 +73,8 @@ $(document).ready(function () {
                     }
                     html += template.replace('%music%', element.name).replace('%time%', time_text);
                 });
-                $('#lista').html(html);
+                html += '</ul>';
+                $('#list').html(html);
             })
             .fail(function (data) {
 
