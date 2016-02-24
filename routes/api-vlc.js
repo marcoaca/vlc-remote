@@ -2,7 +2,9 @@ var express = require('express');
 var router = express.Router();
 var r = require("request");
 
+var keyY = "AIzaSyBhsWbkizSzKJ0HPhRYmkdjkO6FdG6zl3A";
 var vlcPassword = 'password';
+var playlist = {};
 
 var authHeader = 'Basic ' + (new Buffer(':' + vlcPassword, 'utf8')).toString('base64');
 
@@ -11,6 +13,8 @@ var request = r.defaults({
         'Authorization': authHeader
     }
 });
+
+var requestYoutube = require("request");
 
 router.all('/volume', function (req, res, next) {
     var volume = req.body.volume || req.query.volume;
@@ -25,32 +29,13 @@ router.all('/volume', function (req, res, next) {
     }
 });
 
-function removeMusic(music_id){
-    request.get('http://127.0.0.1:8080/requests/playlist.json?command=pl_delete&id=' + music_id, function (error, response, body) {
-        if (error) {
-            res.status(500).json({error: error});
-            return;
-        }
-    });
-}
-
 router.all('/playlist', function (req, res, next) {
     request.get('http://127.0.0.1:8080/requests/playlist.json', function (error, response, body) {
         if (error) {
             res.status(500).json({error: error});
             return;
         }
-        playlist = JSON.parse(body);
-        for (var i = 0; i < playlist.children[0].children.length; i++) {
-            if (!playlist.children[0].children[i].current) {
-                removeMusic(playlist.children[0].children[i].id);
-            } else {
-                break;
-            }
-        }
-        request.get('http://127.0.0.1:8080/requests/playlist.json', function (error, response, body) {
-            res.status(200).json(body);
-        });
+        res.status(200).json(body);
     });
 });
 
@@ -70,6 +55,28 @@ router.all('/add', function (req, res, next) {
         res.status(500).json({error: 'Missing song link argument.'});
         return;
     }
+    var pattern = /v\%3D[a-zA-Z0-9_-]+/;
+    var musicID = pattern.exec(m);
+    var b = musicID.toString();
+    var a = b.substring(4);
+    var youtube = 'https://www.googleapis.com/youtube/v3/videos?id=' + a + '&part=contentDetails&key=' + keyY;
+
+
+    requestYoutube.get(youtube,
+        function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                var result = JSON.parse(body);
+                var duration = result.items[0]["contentDetails"].duration;
+
+
+            } else {
+                console.log(error);
+                res.status(500).send(error);
+                return;
+            }
+        }
+    );
+
     request.get('http://127.0.0.1:8080/requests/status.json',
         function (error, response, body) {
             if (!error && response.statusCode == 200) {
