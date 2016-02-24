@@ -1,7 +1,4 @@
-/** @type {Array} */
-var _0xeb2f = ["noConflict", "use strict", "html", "body", "[data-color-name]", ".css", "", "replace", "dark_", "black_", "assets/css/theme_", "href", "attr", "#theme", "black", "indexOf", "dark", "light", "is-", "color-name", "data", "push", "each", "find", '[data-type="theme-main"]', '[data-type="theme-color"]', "selected", "addClass", "[data-color-name='", "']", "click", "preventDefault", "ccard-in", "toggleClass", "on", ".ccard__toggle", "background-color", "color-code", "css", "length", "parents",
-    "data-color-name", "removeClass", "_", "_on", "hasClass", "off", "oo", " ", "a", '[data-type="toggle"]'];
-var $ = jQuery[_0xeb2f[0]]();
+var $ = jQuery.noConflict();
 (function ($) {
     /**
      * @return {undefined}
