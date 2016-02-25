@@ -1,6 +1,6 @@
 /** @type {Array} */
 var $ = jQuery.noConflict();
-(function($) {
+(function ($) {
     /**
      * @return {undefined}
      */
@@ -9,23 +9,24 @@ var $ = jQuery.noConflict();
         if (emptyJ.length) {
             $spy.addClass("countdown-on");
             emptyJ.countDown({
-                targetDate : {
-                    "day" : 0,
-                    "month" : 0,
-                    "year" : 0,
-                    "hour" : 0,
-                    "min" : 0,
-                    "sec" : 0,
-                    "utc" : false
+                targetDate: {
+                    "day": 0,
+                    "month": 0,
+                    "year": 0,
+                    "hour": 0,
+                    "min": 0,
+                    "sec": 0,
+                    "utc": false
                 },
-                omitWeeks : true
+                omitWeeks: true
             });
         }
     }
+
     /**
      * @return {undefined}
      */
-    function transition() {
+    function transition() { //trata das animações
         var statsTemplate;
         statsTemplate = "#" + $(".section").filter(".is-active").attr("id");
         $("a[href=" + statsTemplate + "]").addClass("is-active");
@@ -42,22 +43,23 @@ var $ = jQuery.noConflict();
                 if (emptyJ.data("animation-in-delay")) {
                     _0x7cd2x11 = emptyJ.data("animation-in-delay");
                 }
-                emptyJ.css("animation-delay", _0x7cd2x11 + 500 + "ms").addClass("animated").addClass("r20");
+                emptyJ.css("animation-delay", _0x7cd2x11 + 500 + "ms").addClass("animated").addClass(r20);
             });
         }
         $spy.addClass(statsTemplate.replace("#", " ") + "-in");
         $(".site-loader").velocity("fadeOut", {
-            queue : false,
-            delay : 500,
-            duration : 800,
+            queue: false,
+            delay: 500,
+            duration: 800,
             /**
              * @return {undefined}
              */
-            complete : function() {
+            complete: function () {
                 $spy.addClass("is-loaded");
             }
         });
     }
+
     /**
      * @return {undefined}
      */
@@ -67,6 +69,7 @@ var $ = jQuery.noConflict();
             one();
         });
     }
+
     /**
      * @return {undefined}
      */
@@ -75,28 +78,29 @@ var $ = jQuery.noConflict();
         $spy.toggleClass("nav-in");
         if ($spy.hasClass("nav-in")) {
             emptyJ.velocity("stop", true).velocity("fadeIn", {
-                duration : 500
+                duration: 500
             });
             $(".site-nav__inner").velocity("stop", true).velocity({
                 translateY: "[0, -25%]",
                 rotateX: "[0deg, 35deg]",
                 opacity: "[1, '.4']"
             }, {
-                duration : 500
+                duration: 500
             });
         } else {
             emptyJ.velocity("stop", true).velocity("fadeOut", {
-                duration : 500
+                duration: 500
             });
             $(".site-nav__inner").velocity("stop", true).velocity({
                 translateY: "[25%, 0]",
                 rotateX: "[-35deg, 0deg]",
                 opacity: "['.4', 1]"
             }, {
-                duration : 500
+                duration: 500
             });
         }
     }
+
     /**
      * @return {undefined}
      */
@@ -129,13 +133,13 @@ var $ = jQuery.noConflict();
                         });
                     }
                     $(".site-loader").velocity("fadeIn", {
-                        queue : false,
-                        delay : maxh + 500,
-                        duration : 800,
+                        queue: false,
+                        delay: maxh + 500,
+                        duration: 800,
                         /**
                          * @return {undefined}
                          */
-                        complete : function() {
+                        complete: function () {
                             $spy.removeClass("animating");
                             $(".site-wrap")["scrollTop"](0);
                             $(".site-wrap")["perfectscrollbar"]("update");
@@ -149,10 +153,10 @@ var $ = jQuery.noConflict();
                             $(".form-group").removeClass("error");
                             $(".form-notify").removeClass("valid error").html().hide();
                             $(this).velocity("fadeOut", {
-                                delay : 100,
-                                duration : 800
+                                delay: 100,
+                                duration: 800
                             });
-                            setTimeout(function() {
+                            setTimeout(function () {
                                 call();
                                 onComplete();
                             }, 0);
@@ -162,6 +166,7 @@ var $ = jQuery.noConflict();
             }
         });
     }
+
     /**
      * @return {undefined}
      */
@@ -178,9 +183,10 @@ var $ = jQuery.noConflict();
             if (ctx.data("animation-in-delay")) {
                 y = ctx.data("animation-in-delay");
             }
-            ctx.css("animation-delay", y + "ms").addClass("animated").addClass("r20");
+            ctx.css("animation-delay", y + "ms").addClass("animated").addClass(r20);
         });
     }
+
     /**
      * @return {undefined}
      */
@@ -188,7 +194,7 @@ var $ = jQuery.noConflict();
         /** @type {number} */
         var _0x7cd2x18 = 1;
         $spy.addClass("animating");
-        $([data - "animation-out"]).each(function () {
+        $("[data-animation-out]").each(function () {
             var collection = $(this);
             var resp = "fadeIn";
             var r20 = "fadeOut";
@@ -210,17 +216,18 @@ var $ = jQuery.noConflict();
             }
             collection.css("animation-delay", _0x7cd2x11 + "ms");
             if (collection.closest(".section").hasClass("is-active")) {
-                collection.removeClass("resp").addClass("r20");
+                collection.removeClass(resp).addClass(r20);
                 if (collection.data("animation-out-delay")) {
                     collection.css("animation-delay", y + "ms");
                 } else {
                     collection.css("animation-delay", "1ms");
                 }
             } else {
-                collection.removeClass("resp").removeClass("r20").removeAttr("style", "animation-delay");
+                collection.removeClass(resp).removeClass(r20).removeAttr("style", "animation-delay");
             }
         });
     }
+
     /**
      * @return {undefined}
      */
@@ -228,10 +235,11 @@ var $ = jQuery.noConflict();
         var emptyJ = $(".site-wrap");
         if (!_0x7cd2x8) {
             emptyJ.perfectScrollbar({
-                suppressScrollX : true
+                suppressScrollX: true
             });
         }
     }
+
     /**
      * @return {undefined}
      */
@@ -239,59 +247,59 @@ var $ = jQuery.noConflict();
         var emptyJ = $("#formContact");
         var _0x7cd2x24 = emptyJ.find(".form-notify");
         emptyJ.validate({
-            onfocusout : false,
-            onkeyup : false,
-            onclick : false,
-            rules : {
-                name : {
-                    required : true
+            onfocusout: false,
+            onkeyup: false,
+            onclick: false,
+            rules: {
+                name: {
+                    required: true
                 },
-                email : {
-                    required : true,
-                    email : true
+                email: {
+                    required: true,
+                    email: true
                 },
-                message : {
-                    required : true
+                message: {
+                    required: true
                 }
             },
-            messages : {},
+            messages: {},
             /**
              * @param {?} element
              * @param {?} error
              * @return {undefined}
              */
-            errorPlacement : function(element, error) {
+            errorPlacement: function (element, error) {
             },
             /**
              * @param {?} js
              * @return {undefined}
              */
-            highlight : function(js) {
+            highlight: function (js) {
                 $(js).parent(".form-group").addClass("error");
             },
             /**
              * @param {?} element
              * @return {undefined}
              */
-            unhighlight : function(element) {
+            unhighlight: function (element) {
                 $(element).parent(".form-group").removeClass("error");
             },
             /**
              * @param {?} form
              * @return {undefined}
              */
-            submitHandler : function(form) {
+            submitHandler: function (form) {
                 $(form).ajaxSubmit({
                     type: "POST",
                     url: "assets/php/contact.php",
-                    dataType: json,
-                    cache : false,
+                    dataType: "json",
+                    cache: false,
                     data: emptyJ.serialize(),
                     /**
                      * @param {?} textStatus
                      * @return {undefined}
                      */
-                    success : function(textStatus) {
+                    success: function (textStatus) {
                         if (textStatus.code == 0) {
                             emptyJ.validate().resetForm();
                             emptyJ[0].reset();
@@ -306,7 +314,7 @@ var $ = jQuery.noConflict();
                      * @param {?} textStatus
                      * @return {undefined}
                      */
-                    error : function(textStatus) {
+                    error: function (textStatus) {
                         _0x7cd2x24.removeClass("valid").addClass("error").html("An error occurred. Please try again later.").show();
                     }
                 });
@@ -316,35 +324,36 @@ var $ = jQuery.noConflict();
              * @param {?} k
              * @return {undefined}
              */
-            invalidHandler : function(val, k) {
+            invalidHandler: function (val, k) {
                 var _0x7cd2x2b = k.numberOfInvalids();
                 if (_0x7cd2x2b) {
                     var r20 = _0x7cd2x2b == 1 ? "You missed  1 field. It has been highlighted. " : "You missed " + _0x7cd2x2b + "fields. They have been highlighted.";
-                    _0x7cd2x24.removeClass("valid error").addClass("error").html("r20").show();
+                    _0x7cd2x24.removeClass("valid error").addClass("error").html(r20).show();
                 }
             }
         });
     }
+
     /**
      * @return {undefined}
      */
-    function init() {
-        var nodes = $('a[href="#newsletter"]', 'a[href="#playlist"]');
+    function init() { //inicia a pop up para adicionar musicas
+        var nodes = $('a[href="#newsletter"], a[href="#playlist"]');
         var emptyJ = $("#formNewsletter");
         var _0x7cd2x24 = emptyJ.find(".form-notify");
         var value = {
             closeMarkup: '<div class="mfp-close_c mfp-close"></div>',
             type: "inline",
             overflowY: "scroll",
-            removalDelay : 500,
+            removalDelay: 500,
             mainClass: "mfp-effect",
-            preloader : false,
+            preloader: false,
             focus: "input",
-            callbacks : {
+            callbacks: {
                 /**
                  * @return {undefined}
                  */
-                beforeOpen : function() {
+                beforeOpen: function () {
                     if ($(window).width() < 768) {
                         /** @type {boolean} */
                         this.st.focus = false;
@@ -356,69 +365,69 @@ var $ = jQuery.noConflict();
                 /**
                  * @return {undefined}
                  */
-                beforeClose : function() {
+                beforeClose: function () {
                     $spy.removeClass("newsletter-in");
                 },
                 /**
                  * @return {undefined}
                  */
-                afterClose : function() {
+                afterClose: function () {
                     nodes.blur();
                     emptyJ.find(".form-group").removeClass("error");
                     _0x7cd2x24.removeClass("valid error").html().hide();
                 }
             },
-            midClick : true
+            midClick: true
         };
         nodes.magnificPopup(value);
         emptyJ.validate({
-            onfocusout : false,
-            onkeyup : false,
-            onclick : false,
-            rules : {
-                email : {
-                    required : true,
-                    email : true
+            onfocusout: false,
+            onkeyup: false,
+            onclick: false,
+            rules: {
+                email: {
+                    required: true,
+                    email: true
                 }
             },
-            messages : {},
+            messages: {},
             /**
              * @param {?} element
              * @param {?} error
              * @return {undefined}
              */
-            errorPlacement : function(element, error) {
+            errorPlacement: function (element, error) {
             },
             /**
              * @param {?} js
              * @return {undefined}
              */
-            highlight : function(js) {
+            highlight: function (js) {
                 $(js).parent(".form-group").addClass("error");
             },
             /**
              * @param {?} element
              * @return {undefined}
              */
-            unhighlight : function(element) {
+            unhighlight: function (element) {
                 $(element).parent(".form-group").removeClass("error");
             },
             /**
              * @param {?} form
              * @return {undefined}
              */
-            submitHandler : function(form) {
+            submitHandler: function (form) {
                 $(form).ajaxSubmit({
                     type: "POST",
                     url: "/api-vlc/add",
                     dataType: json,
-                    cache : false,
+                    cache: false,
                     data: emptyJ.serialize(),
                     /**
                      * @param {?} textStatus
                      * @return {undefined}
                      */
-                    success : function(textStatus) {
+                    success: function (textStatus) {
                         if (textStatus.code == 0) {
                             emptyJ.validate().resetForm();
                             emptyJ[0].reset();
@@ -433,7 +442,7 @@ var $ = jQuery.noConflict();
                      * @param {?} textStatus
                      * @return {undefined}
                      */
-                    error : function(textStatus) {
+                    error: function (textStatus) {
                         _0x7cd2x24.removeClass("valid").addClass("error").html("An error occurred. Please try again later.").show();
                     }
                 });
@@ -443,15 +452,16 @@ var $ = jQuery.noConflict();
              * @param {?} k
              * @return {undefined}
              */
-            invalidHandler : function(val, k) {
+            invalidHandler: function (val, k) {
                 var _0x7cd2x2b = k.numberOfInvalids();
                 if (_0x7cd2x2b) {
                     var r20 = _0x7cd2x2b == 1 ? "You missed 1 field. It has been highlighted. " : "You missed " + _0x7cd2x2b + "fields. They have been highlighted.";
-                    _0x7cd2x24.removeClass("valid").addClass("error").html("r20").show();
+                    _0x7cd2x24.removeClass("valid").addClass("error").html(r20).show();
                 }
             }
         });
     }
+
     /**
      * @return {undefined}
      */
@@ -466,6 +476,7 @@ var $ = jQuery.noConflict();
             }
         }
     }
+
     /**
      * @return {undefined}
      */
@@ -497,6 +508,7 @@ var $ = jQuery.noConflict();
                 }
             });
         }
+
         if (_0x7cd2x8) {
             if (_bg_style_mobile == 2 || (_bg_style_mobile == 4 || (_bg_style_mobile == 6 || _bg_style_mobile == 8))) {
                 $spy.addClass("is-audio-off");
@@ -511,12 +523,14 @@ var $ = jQuery.noConflict();
             }
         }
     }
+
     /**
      * @return {undefined}
      */
     function reset() {
         find();
     }
+
     /**
      * @return {undefined}
      */
@@ -526,24 +540,25 @@ var $ = jQuery.noConflict();
             translateZ: 0,
             translateX: "[-100%, 100%]"
         }, {
-            duration : 25E3,
+            duration: 25E3,
             ease: "liner",
-            queue : false,
+            queue: false,
             /**
              * @return {undefined}
              */
-            complete : function() {
+            complete: function () {
                 $(this).velocity({
                     translateX: "100%"
                 }, {
-                    duration : 0,
-                    queue : false,
+                    duration: 0,
+                    queue: false,
                     /** @type {function (): undefined} */
-                    complete: "fn"
+                    complete: fn
                 });
             }
         });
     }
+
     /**
      * @return {undefined}
      */
@@ -553,24 +568,25 @@ var $ = jQuery.noConflict();
             translateZ: 0,
             translateX: "[-100%, 100%]"
         }, {
-            duration : 35E3,
+            duration: 35E3,
             ease: "liner",
-            queue : false,
+            queue: false,
             /**
              * @return {undefined}
              */
-            complete : function() {
+            complete: function () {
                 $(this).velocity({
                     translateX: "100%"
                 }, {
-                    duration : 0,
-                    queue : false,
+                    duration: 0,
+                    queue: false,
                     /** @type {function (): undefined} */
-                    complete: "done"
+                    complete: done
                 });
             }
         });
     }
+
     /**
      * @return {undefined}
      */
@@ -580,20 +596,20 @@ var $ = jQuery.noConflict();
             translateZ: 0,
             translateX: "[-100%, 100%]"
         }, {
-            duration : 45E3,
+            duration: 45E3,
             ease: "liner",
-            queue : false,
+            queue: false,
             /**
              * @return {undefined}
              */
-            complete : function() {
+            complete: function () {
                 $(this).velocity({
                     translateX: "100%"
                 }, {
-                    duration : 0,
-                    queue : false,
+                    duration: 0,
+                    queue: false,
                     /** @type {function (): undefined} */
-                    complete: "show"
+                    complete: show
                 });
             }
         });
@@ -609,24 +625,25 @@ var $ = jQuery.noConflict();
             translateZ: 0,
             translateY: "[-2000px, 0]"
         }, {
-            duration : 5E4,
+            duration: 5E4,
             ease: "liner",
-            queue : false,
+            queue: false,
             /**
              * @return {undefined}
              */
-            complete : function() {
+            complete: function () {
                 $(this).velocity({
                     translateY: 0
                 }, {
-                    duration : 0,
-                    queue : false,
+                    duration: 0,
+                    queue: false,
                     /** @type {function (): undefined} */
-                    complete: "callback"
+                    complete: callback
                 });
             }
         });
     }
+
     /**
      * @return {undefined}
      */
@@ -636,24 +653,25 @@ var $ = jQuery.noConflict();
             translateZ: 0,
             translateY: "[-2000px, 0]"
         }, {
-            duration : 1E5,
+            duration: 1E5,
             ease: "liner",
-            queue : false,
+            queue: false,
             /**
              * @return {undefined}
              */
-            complete : function() {
+            complete: function () {
                 $(this).velocity({
                     translateY: 0
                 }, {
-                    duration : 0,
-                    queue : false,
+                    duration: 0,
+                    queue: false,
                     /** @type {function (): undefined} */
-                    complete: "hide"
+                    complete: hide
                 });
             }
         });
     }
+
     /**
      * @return {undefined}
      */
@@ -663,24 +681,25 @@ var $ = jQuery.noConflict();
             translateZ: 0,
             translateY: "[-2000px, 0]"
         }, {
-            duration : 15E4,
+            duration: 15E4,
             ease: "liner",
-            queue : false,
+            queue: false,
             /**
              * @return {undefined}
              */
-            complete : function() {
+            complete: function () {
                 $(this).velocity({
                     translateY: 0
                 }, {
-                    duration : 0,
-                    queue : false,
+                    duration: 0,
+                    queue: false,
                     /** @type {function (): undefined} */
-                    complete: "fix"
+                    complete: fix
                 });
             }
         });
     }
+
     /**
      * @return {undefined}
      */
@@ -705,6 +724,7 @@ var $ = jQuery.noConflict();
                 /** @type {number} */
                 this.radius = Math.random() * line.config.star.width;
             }
+
             /** @type {number} */
             var lowestDeltaXY = 12E3;
             /** @type {number} */
@@ -715,29 +735,29 @@ var $ = jQuery.noConflict();
             var line = $(this);
             var obj = args.getContext("2d");
             line.config = {
-                star : {
-                    color : _bg_effect_star_color,
-                    width : _bg_effect_star_width
+                star: {
+                    color: _bg_effect_star_color,
+                    width: _bg_effect_star_width
                 },
-                line : {
-                    color : _bg_effect_star_color,
-                    width : 0.4
+                line: {
+                    color: _bg_effect_star_color,
+                    width: 0.4
                 },
-                position : {
+                position: {
                     x: args.width * 0.5,
                     y: args.height * 0.5
                 },
-                velocity : VELOCITY_UFO,
-                length : len,
-                distance : 130,
-                radius : 120,
-                stars : []
+                velocity: VELOCITY_UFO,
+                length: len,
+                distance: 130,
+                radius: 120,
+                stars: []
             };
             animate.prototype = {
                 /**
                  * @return {undefined}
                  */
-                create : function() {
+                create: function () {
                     obj.beginPath();
                     obj.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
                     obj.fill();
@@ -745,7 +765,7 @@ var $ = jQuery.noConflict();
                 /**
                  * @return {undefined}
                  */
-                animate : function() {
+                animate: function () {
                     var unlock;
                     /** @type {number} */
                     unlock = 0;
@@ -769,7 +789,7 @@ var $ = jQuery.noConflict();
                 /**
                  * @return {undefined}
                  */
-                line : function() {
+                line: function () {
                     var _len = line.config.length;
                     var args;
                     var token;
@@ -777,10 +797,10 @@ var $ = jQuery.noConflict();
                     var _j;
                     /** @type {number} */
                     _i = 0;
-                    for (;_i < _len;_i++) {
+                    for (; _i < _len; _i++) {
                         /** @type {number} */
                         _j = 0;
-                        for (;_j < _len;_j++) {
+                        for (; _j < _len; _j++) {
                             args = line.config.stars[_i];
                             token = line.config.stars[_j];
                             if (args.x - token.x < line.config.distance && (args.y - token.y < line.config.distance && (args.x - token.x > -line.config.distance && args.y - token.y > -line.config.distance))) {
@@ -806,7 +826,7 @@ var $ = jQuery.noConflict();
                 obj.clearRect(0, 0, args.width, args.height);
                 /** @type {number} */
                 i = 0;
-                for (;i < padLength;i++) {
+                for (; i < padLength; i++) {
                     line.config.stars.push(new animate);
                     part = line.config.stars[i];
                     part.create();
@@ -836,7 +856,7 @@ var $ = jQuery.noConflict();
              */
             line.loop = function ($sanitize) {
                 $sanitize();
-                throttledUpdate(function() {
+                throttledUpdate(function () {
                     line.loop(function () {
                         $sanitize();
                     });
@@ -871,16 +891,16 @@ var $ = jQuery.noConflict();
                 window.setTimeout(task, 1E3 / 60);
             })));
         $(window).on("load", function () {
-            setTimeout(function() {
+            setTimeout(function () {
                 build($("canvas")[0]).init();
                 emptyJ.velocity("transition.fadeIn", {
-                    duration : 3E3
+                    duration: 3E3
                 });
             }, 2E3);
         });
-        var successCallback = function() {
+        var successCallback = function () {
             var timers = {};
-            return function(callback, delay, key) {
+            return function (callback, delay, key) {
                 if (!key) {
                     key = " ";
                 }
@@ -892,11 +912,12 @@ var $ = jQuery.noConflict();
             };
         }();
         $(window).resize(function () {
-            successCallback(function() {
+            successCallback(function () {
                 build($("canvas")[0]).init();
             }, "800", " ");
         });
     }
+
     /**
      * @return {undefined}
      */
@@ -926,6 +947,7 @@ var $ = jQuery.noConflict();
                 transition();
             });
         }
+
         if (_0x7cd2x8) {
             if (_bg_style_mobile == 1 || _bg_style_mobile == 2) {
                 loop();
@@ -940,6 +962,7 @@ var $ = jQuery.noConflict();
             }
         }
     }
+
     /**
      * @return {undefined}
      */
@@ -947,23 +970,23 @@ var $ = jQuery.noConflict();
         var emptyJ = $("#serviceCarousel");
         if (emptyJ.length) {
             emptyJ.owlCarousel({
-                rewind : true,
-                nav : true,
+                rewind: true,
+                nav: true,
                 navText: "[, ]",
                 navContainer: ".service__carousel-control",
                 navContainerClass: "carousel-nav",
                 navClass: "[carousel-prev, carousel-next]",
-                dots : false,
-                margin : 30,
-                responsive : {
-                    0 : {
-                        items : 1
+                dots: false,
+                margin: 30,
+                responsive: {
+                    0: {
+                        items: 1
                     },
-                    768 : {
-                        items : 2
+                    768: {
+                        items: 2
                     },
-                    992 : {
-                        items : 3
+                    992: {
+                        items: 3
                     }
                 }
             });
@@ -976,12 +999,12 @@ var $ = jQuery.noConflict();
     var collection = $('[data-link="section"]');
     var resp = $(".site-nav__menu").find("a");
     var serverAttrs = collection.add("resp");
-    (function() {
+    (function () {
         "use strict;"
         if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
             var r20 = document.createElement("style");
             r20.appendChild(document.createTextNode("@-ms-viewport{width:auto!important}"));
-            document.querySelector("head").appendChild("r20");
+            document.querySelector("head").appendChild(r20);
         }
     })();
     if (!emptyJ.hasClass("desktop")) {
