@@ -1,10 +1,7 @@
-/** @type {Array} */
 var $ = jQuery.noConflict();
 (function ($) {
-    /**
-     * @return {undefined}
-     */
-    function transition() { //trata das animações
+
+    function transition() { //trata das animações do centro
         var statsTemplate;
         statsTemplate = "#" + $(".section").filter(".is-active").attr("id");
         $("a[href=" + statsTemplate + "]").addClass("is-active");
@@ -13,7 +10,7 @@ var $ = jQuery.noConflict();
             $(statsTemplate).find("[data-animation-in]").each(function () {
                 var emptyJ = $(this);
                 var r20 = "fadeIn";
-                /** @type {number} */
+
                 var _0x7cd2x11 = 1;
                 if (emptyJ.data("animation-in")) {
                     r20 = emptyJ.data("animation-in");
@@ -29,18 +26,14 @@ var $ = jQuery.noConflict();
             queue: false,
             delay: 500,
             duration: 800,
-            /**
-             * @return {undefined}
-             */
+
             complete: function () {
                 $spy.addClass("is-loaded");
             }
         });
     }
 
-    /**
-     * @return {undefined}
-     */
+
     function domReady() {
         $(".site-header__icon__nav").find("a").add("resp").on("click", function (dataAndEvents) {
             dataAndEvents.preventDefault();
@@ -48,9 +41,7 @@ var $ = jQuery.noConflict();
         });
     }
 
-    /**
-     * @return {undefined}
-     */
+
     function one() {
         var emptyJ = $(".site-nav");
         $spy.toggleClass("nav-in");
@@ -79,12 +70,10 @@ var $ = jQuery.noConflict();
         }
     }
 
-    /**
-     * @return {undefined}
-     */
+
     function run() {
         var $src = $(".section");
-        /** @type {Array} */
+
         var which = [];
         $src.each(function () {
             which.push(this.id);
@@ -92,7 +81,7 @@ var $ = jQuery.noConflict();
         serverAttrs.on("click", function (dataAndEvents) {
             var curElem = $(this);
             var statsTemplate = curElem.attr("href");
-            /** @type {number} */
+
             var maxh = 1;
             dataAndEvents.preventDefault();
             if (!$(statsTemplate).length || curElem.hasClass("is-active")) {
@@ -114,9 +103,7 @@ var $ = jQuery.noConflict();
                         queue: false,
                         delay: maxh + 500,
                         duration: 800,
-                        /**
-                         * @return {undefined}
-                         */
+
                         complete: function () {
                             $spy.removeClass("animating");
                             $(".site-wrap")["scrollTop"](0);
@@ -145,15 +132,13 @@ var $ = jQuery.noConflict();
         });
     }
 
-    /**
-     * @return {undefined}
-     */
+
     function onComplete() {
         var _0x7cd2x1d = $(".section").filter(".is-active");
         _0x7cd2x1d.find("[data-animation-in]").each(function () {
             var ctx = $(this);
             var r20 = "fadeIn";
-            /** @type {number} */
+
             var y = 100;
             if (ctx.data("animation-in")) {
                 r20 = ctx.data("animation-in");
@@ -165,20 +150,18 @@ var $ = jQuery.noConflict();
         });
     }
 
-    /**
-     * @return {undefined}
-     */
+
     function teardown() {
-        /** @type {number} */
+
         var _0x7cd2x18 = 1;
         $spy.addClass("animating");
         $("[data-animation-out]").each(function () {
             var collection = $(this);
             var resp = "fadeIn";
             var r20 = "fadeOut";
-            /** @type {number} */
+
             var _0x7cd2x11 = 100;
-            /** @type {number} */
+
             var y = 1;
             if (collection.data("animation-in")) {
                 resp = collection.data("animation-in");
@@ -206,9 +189,7 @@ var $ = jQuery.noConflict();
         });
     }
 
-    /**
-     * @return {undefined}
-     */
+
     function call() {
         var emptyJ = $(".site-wrap");
         if (!_0x7cd2x8) {
@@ -218,9 +199,7 @@ var $ = jQuery.noConflict();
         }
     }
 
-    /**
-     * @return {undefined}
-     */
+
     function onDeviceReady() {
         var emptyJ = $("#formContact");
         var _0x7cd2x24 = emptyJ.find(".form-notify");
@@ -241,31 +220,18 @@ var $ = jQuery.noConflict();
                 }
             },
             messages: {},
-            /**
-             * @param {?} element
-             * @param {?} error
-             * @return {undefined}
-             */
+
             errorPlacement: function (element, error) {
             },
-            /**
-             * @param {?} js
-             * @return {undefined}
-             */
+
             highlight: function (js) {
                 $(js).parent(".form-group").addClass("error");
             },
-            /**
-             * @param {?} element
-             * @return {undefined}
-             */
+
             unhighlight: function (element) {
                 $(element).parent(".form-group").removeClass("error");
             },
-            /**
-             * @param {?} form
-             * @return {undefined}
-             */
+
             submitHandler: function (form) {
                 $(form).ajaxSubmit({
                     type: "POST",
@@ -273,10 +239,7 @@ var $ = jQuery.noConflict();
                     dataType: "json",
                     cache: false,
                     data: emptyJ.serialize(),
-                    /**
-                     * @param {?} textStatus
-                     * @return {undefined}
-                     */
+
                     success: function (textStatus) {
                         if (textStatus.code == 0) {
                             emptyJ.validate().resetForm();
@@ -288,20 +251,14 @@ var $ = jQuery.noConflict();
                             _0x7cd2x24.removeClass("valid error").addClass("error").html(textStatus.message).show();
                         }
                     },
-                    /**
-                     * @param {?} textStatus
-                     * @return {undefined}
-                     */
+
                     error: function (textStatus) {
                         _0x7cd2x24.removeClass("valid").addClass("error").html("An error occurred. Please try again later.").show();
                     }
                 });
             },
-            /**
-             * @param {?} val
-             * @param {?} k
-             * @return {undefined}
-             */
+
+
             invalidHandler: function (val, k) {
                 var _0x7cd2x2b = k.numberOfInvalids();
                 if (_0x7cd2x2b) {
@@ -312,9 +269,7 @@ var $ = jQuery.noConflict();
         });
     }
 
-    /**
-     * @return {undefined}
-     */
+
     function init() { //inicia a pop up para adicionar musicas
         var nodes = $('a[href="#newsletter"], a[href="#playlist"]');
         var emptyJ = $("#formNewsletter");
@@ -328,27 +283,21 @@ var $ = jQuery.noConflict();
             preloader: false,
             focus: "input",
             callbacks: {
-                /**
-                 * @return {undefined}
-                 */
+
                 beforeOpen: function () {
                     if ($(window).width() < 768) {
-                        /** @type {boolean} */
+
                         this.st.focus = false;
                     } else {
                         this.st.focus = "#newsletterEmail";
                     }
                     $spy.addClass("newsletter-in");
                 },
-                /**
-                 * @return {undefined}
-                 */
+
                 beforeClose: function () {
                     $spy.removeClass("newsletter-in");
                 },
-                /**
-                 * @return {undefined}
-                 */
+
                 afterClose: function () {
                     nodes.blur();
                     emptyJ.find(".form-group").removeClass("error");
@@ -369,31 +318,19 @@ var $ = jQuery.noConflict();
                 }
             },
             messages: {},
-            /**
-             * @param {?} element
-             * @param {?} error
-             * @return {undefined}
-             */
+
+
             errorPlacement: function (element, error) {
             },
-            /**
-             * @param {?} js
-             * @return {undefined}
-             */
+
             highlight: function (js) {
                 $(js).parent(".form-group").addClass("error");
             },
-            /**
-             * @param {?} element
-             * @return {undefined}
-             */
+
             unhighlight: function (element) {
                 $(element).parent(".form-group").removeClass("error");
             },
-            /**
-             * @param {?} form
-             * @return {undefined}
-             */
+
             submitHandler: function (form) {
                 $(form).ajaxSubmit({
                     type: "POST",
@@ -401,10 +338,7 @@ var $ = jQuery.noConflict();
                     dataType: "json",
                     cache: false,
                     data: emptyJ.serialize(),
-                    /**
-                     * @param {?} textStatus
-                     * @return {undefined}
-                     */
+
                     success: function (textStatus) {
                         if (textStatus.code == 0) {
                             emptyJ.validate().resetForm();
@@ -416,20 +350,14 @@ var $ = jQuery.noConflict();
                             _0x7cd2x24.removeClass("valid").addClass("error").html(textStatus.message).show();
                         }
                     },
-                    /**
-                     * @param {?} textStatus
-                     * @return {undefined}
-                     */
+
                     error: function (textStatus) {
                         _0x7cd2x24.removeClass("valid").addClass("error").html("An error occurred. Please try again later.").show();
                     }
                 });
             },
-            /**
-             * @param {?} val
-             * @param {?} k
-             * @return {undefined}
-             */
+
+
             invalidHandler: function (val, k) {
                 var _0x7cd2x2b = k.numberOfInvalids();
                 if (_0x7cd2x2b) {
@@ -440,55 +368,6 @@ var $ = jQuery.noConflict();
         });
     }
 
-    /**
-     * @return {undefined}
-     */
-    function access() {
-        /**
-         * @return {undefined}
-         */
-        function fn() {
-            var emptyJ = $(".site-header__icon__audio");
-            var _0x7cd2x3c = document.getElementById("audioPlayer");
-            emptyJ.on("click", function () {
-                var emptyJ = $(this);
-                if ($spy.hasClass("is-audio-on")) {
-                    //_0x7cd2x3c[pause]();
-                    $spy.removeClass("is-audio-on").addClass("is-audio-off");
-                } else {
-                    if ($spy.hasClass("is-audio-off")) {
-                        //_0x7cd2x3c[play]();
-                        $spy.removeClass("is-audio-off").addClass("is-audio-on");
-                    }
-                }
-            });
-        }
-
-        if (_0x7cd2x8) {
-            if (_bg_style_mobile == 2 || (_bg_style_mobile == 4 || (_bg_style_mobile == 6 || _bg_style_mobile == 8))) {
-                $spy.addClass("is-audio-off");
-                fn();
-            }
-        } else {
-            if (_bg_style_desktop == 2 || (_bg_style_desktop == 4 || (_bg_style_desktop == 6 || (_bg_style_desktop == 8 || (_bg_style_desktop == 11 || _bg_style_desktop == 14))))) {
-                var _0x7cd2x3c = document.getElementById("audioPlayer");
-                $spy.addClass("is-audio-on");
-                //_0x7cd2x3c[play]();
-                fn();
-            }
-        }
-    }
-
-    /**
-     * @return {undefined}
-     */
-    function reset() {
-        find();
-    }
-
-    /**
-     * @return {undefined}
-     */
     function fn() {
         var ease = $(".cloud-01");
         ease.velocity({
@@ -498,25 +377,21 @@ var $ = jQuery.noConflict();
             duration: 25E3,
             ease: "liner",
             queue: false,
-            /**
-             * @return {undefined}
-             */
+
             complete: function () {
                 $(this).velocity({
                     translateX: "100%"
                 }, {
                     duration: 0,
                     queue: false,
-                    /** @type {function (): undefined} */
+
                     complete: fn
                 });
             }
         });
     }
 
-    /**
-     * @return {undefined}
-     */
+
     function done() {
         var ease = $(".cloud-02");
         ease.velocity({
@@ -526,25 +401,21 @@ var $ = jQuery.noConflict();
             duration: 35E3,
             ease: "liner",
             queue: false,
-            /**
-             * @return {undefined}
-             */
+
             complete: function () {
                 $(this).velocity({
                     translateX: "100%"
                 }, {
                     duration: 0,
                     queue: false,
-                    /** @type {function (): undefined} */
+
                     complete: done
                 });
             }
         });
     }
 
-    /**
-     * @return {undefined}
-     */
+
     function show() {
         var ease = $(".cloud-03");
         ease.velocity({
@@ -554,16 +425,14 @@ var $ = jQuery.noConflict();
             duration: 45E3,
             ease: "liner",
             queue: false,
-            /**
-             * @return {undefined}
-             */
+
             complete: function () {
                 $(this).velocity({
                     translateX: "100%"
                 }, {
                     duration: 0,
                     queue: false,
-                    /** @type {function (): undefined} */
+
                     complete: show
                 });
             }
@@ -571,9 +440,6 @@ var $ = jQuery.noConflict();
     }
 
 
-    /**
-     * @return {undefined}
-     */
     function callback() {
         var ease = $(".star-01");
         ease.velocity({
@@ -583,25 +449,21 @@ var $ = jQuery.noConflict();
             duration: 5E4,
             ease: "liner",
             queue: false,
-            /**
-             * @return {undefined}
-             */
+
             complete: function () {
                 $(this).velocity({
                     translateY: 0
                 }, {
                     duration: 0,
                     queue: false,
-                    /** @type {function (): undefined} */
+
                     complete: callback
                 });
             }
         });
     }
 
-    /**
-     * @return {undefined}
-     */
+
     function hide() {
         var ease = $(".star-02");
         ease.velocity({
@@ -611,25 +473,21 @@ var $ = jQuery.noConflict();
             duration: 1E5,
             ease: "liner",
             queue: false,
-            /**
-             * @return {undefined}
-             */
+
             complete: function () {
                 $(this).velocity({
                     translateY: 0
                 }, {
                     duration: 0,
                     queue: false,
-                    /** @type {function (): undefined} */
+
                     complete: hide
                 });
             }
         });
     }
 
-    /**
-     * @return {undefined}
-     */
+
     function fix() {
         var ease = $(".star-03");
         ease.velocity({
@@ -639,56 +497,51 @@ var $ = jQuery.noConflict();
             duration: 15E4,
             ease: "liner",
             queue: false,
-            /**
-             * @return {undefined}
-             */
+
             complete: function () {
                 $(this).velocity({
                     translateY: 0
                 }, {
                     duration: 0,
                     queue: false,
-                    /** @type {function (): undefined} */
+
                     complete: fix
                 });
             }
         });
     }
 
-    /**
-     * @return {undefined}
-     */
+
     function find() {
-        /**
-         * @param {?} args
-         * @return {?}
-         */
+
+        var _bg_effect_star_color = 'rgba(255, 255, 255, .9)';// rgba format - star color
+        var _bg_effect_star_width = 1.6; // px - star width
+        var _bg_effect_link_width = 0.4; //expessura das linhas
+
+
         function build(args) {
-            /**
-             * @return {undefined}
-             */
+
             function animate() {
-                /** @type {number} */
+
                 this.x = Math.random() * args.width;
-                /** @type {number} */
+
                 this.y = Math.random() * args.height;
-                /** @type {number} */
-                this.vx = line.config.velocity - Math.random() * 0.3;
-                /** @type {number} */
-                this.vy = line.config.velocity - Math.random() * 0.3;
-                /** @type {number} */
+
+                this.vx = line.config.velocity - Math.random() * 0.1;
+
+                this.vy = line.config.velocity - Math.random() * 0.1;
+
                 this.radius = Math.random() * line.config.star.width;
             }
 
-            /** @type {number} */
             var lowestDeltaXY = 12E3;
-            /** @type {number} */
             var VELOCITY_UFO = 0.2;
             var b4 = $(window).width();
             var a1 = $(window).height();
-            var len = Math.round(a1 * b4 / lowestDeltaXY);
+            var len = Math.round(a1 * b4 / lowestDeltaXY); //numero de estrelas
             var line = $(this);
             var obj = args.getContext("2d");
+
             line.config = {
                 star: {
                     color: _bg_effect_star_color,
@@ -696,7 +549,7 @@ var $ = jQuery.noConflict();
                 },
                 line: {
                     color: _bg_effect_star_color,
-                    width: 0.4
+                    width: _bg_effect_link_width
                 },
                 position: {
                     x: args.width * 0.5,
@@ -704,35 +557,32 @@ var $ = jQuery.noConflict();
                 },
                 velocity: VELOCITY_UFO,
                 length: len,
-                distance: 130,
-                radius: 120,
+                distance: 100,
+                radius: 100,
                 stars: []
             };
+
             animate.prototype = {
-                /**
-                 * @return {undefined}
-                 */
+
                 create: function () {
                     obj.beginPath();
                     obj.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
                     obj.fill();
                 },
-                /**
-                 * @return {undefined}
-                 */
+
                 animate: function () {
                     var unlock;
-                    /** @type {number} */
+
                     unlock = 0;
                     for (; unlock < line.config.length; unlock++) {
                         var cache = line.config.stars[unlock];
                         if (cache.y < 0 || cache.y > args.height) {
                             cache.vx = cache.vx;
-                            /** @type {number} */
+
                             cache.vy = -cache.vy;
                         } else {
                             if (cache.x < 0 || cache.x > args.width) {
-                                /** @type {number} */
+
                                 cache.vx = -cache.vx;
                                 cache.vy = cache.vy;
                             }
@@ -741,19 +591,17 @@ var $ = jQuery.noConflict();
                         cache.y += cache.vy;
                     }
                 },
-                /**
-                 * @return {undefined}
-                 */
+
                 line: function () {
                     var _len = line.config.length;
                     var args;
                     var token;
                     var _i;
                     var _j;
-                    /** @type {number} */
+
                     _i = 0;
                     for (; _i < _len; _i++) {
-                        /** @type {number} */
+
                         _j = 0;
                         for (; _j < _len; _j++) {
                             args = line.config.stars[_i];
@@ -771,15 +619,13 @@ var $ = jQuery.noConflict();
                     }
                 }
             };
-            /**
-             * @return {undefined}
-             */
+
             line.createStars = function () {
                 var padLength = line.config.length;
                 var part;
                 var i;
                 obj.clearRect(0, 0, args.width, args.height);
-                /** @type {number} */
+
                 i = 0;
                 for (; i < padLength; i++) {
                     line.config.stars.push(new animate);
@@ -789,26 +635,20 @@ var $ = jQuery.noConflict();
                 part.line();
                 part.animate();
             };
-            /**
-             * @return {undefined}
-             */
+
             line.setCanvas = function () {
                 args.width = window.innerWidth;
                 args.height = window.innerHeight;
             };
-            /**
-             * @return {undefined}
-             */
+
             line.setContext = function () {
                 obj.fillStyle = line.config.star.color;
                 obj.strokeStyle = line.config.line.color;
                 obj.lineWidth = line.config.line.width;
                 obj.fill();
             };
-            /**
-             * @param {?} $sanitize
-             * @return {undefined}
-             */
+
+
             line.loop = function ($sanitize) {
                 $sanitize();
                 throttledUpdate(function () {
@@ -817,18 +657,14 @@ var $ = jQuery.noConflict();
                     });
                 });
             };
-            /**
-             * @return {undefined}
-             */
+
             line.bind = function () {
                 $(window).on("mousemove", function (dataAndEvents) {
                     line.config.position.x = dataAndEvents.pageX;
                     line.config.position.y = dataAndEvents.pageY;
                 });
             };
-            /**
-             * @return {undefined}
-             */
+
             line.init = function () {
                 line.setCanvas();
                 line.setContext();
@@ -853,6 +689,7 @@ var $ = jQuery.noConflict();
                 });
             }, 2E3);
         });
+
         var successCallback = function () {
             var timers = {};
             return function (callback, delay, key) {
@@ -862,7 +699,7 @@ var $ = jQuery.noConflict();
                 if (timers.key) {
                     clearTimeout(timers.key);
                 }
-                /** @type {number} */
+
                 timers.key = setTimeout(callback, delay);
             };
         }();
@@ -873,26 +710,22 @@ var $ = jQuery.noConflict();
         });
     }
 
-    /**
-     * @return {undefined}
-     */
+
     function main() {
-        /**
-         * @return {undefined}
-         */
+
         function loop() {
-            /** @type {Array} */
+
             var data = ["assets/img/bg/home.jpg", "assets/img/bg/about.jpg", "assets/img/bg/service.jpg", "assets/img/bg/contact.jpg"];
-            /** @type {Array} */
+
             var elems = [];
             var i;
-            /** @type {number} */
+
             i = 0;
             for (; i < data.length; i++) {
-                /** @type {Image} */
+
                 var e = new Image;
                 e.src = data[i];
-                /** @type {Image} */
+
                 elems[i] = e;
             }
             var isArray = imagesLoaded(elems);
@@ -903,24 +736,10 @@ var $ = jQuery.noConflict();
             });
         }
 
-        if (_0x7cd2x8) {
-            if (_bg_style_mobile == 1 || _bg_style_mobile == 2) {
-                loop();
-            } else {
-                transition();
-            }
-        } else {
-            if (_bg_style_desktop == 1 || _bg_style_desktop == 2) {
-                loop();
-            } else {
-                transition();
-            }
-        }
+        loop();
     }
 
-    /**
-     * @return {undefined}
-     */
+
     function group() {
         var emptyJ = $("#serviceCarousel");
         if (emptyJ.length) {
@@ -963,16 +782,16 @@ var $ = jQuery.noConflict();
         }
     })();
     if (!emptyJ.hasClass("desktop")) {
-        /** @type {boolean} */
+
         var _0x7cd2x8 = true;
         emptyJ.addClass("is-mobile");
     } else {
-        /** @type {boolean} */
+
         _0x7cd2x8 = false;
         emptyJ.addClass("is-desktop");
     }
     if (emptyJ.hasClass("ie9")) {
-        /** @type {boolean} */
+
         var _0x7cd2x9 = true
     }
     $("a[href=#]").on("click", function (dataAndEvents) {
@@ -983,8 +802,7 @@ var $ = jQuery.noConflict();
     run();
     onDeviceReady();
     init();
-    access();
-    reset();
+    find();
     $(window).on("load", function () {
         main();
     });

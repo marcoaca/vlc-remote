@@ -9,7 +9,7 @@
 //
 
 // for desktop
-var _bg_style_desktop =                 4;
+var _bg_style_desktop = 1;
                                            // 1 = each image at each section
                                            // 2 = each image at each section (mp3 audio)
                                            // 3 = image
@@ -26,7 +26,7 @@ var _bg_style_desktop =                 4;
                                            // 14 = youtube video (mp3 audio)
 
 // for mobile
-var _bg_style_mobile =                  4;
+var _bg_style_mobile = 1;
                                            // 1 = each image at each section
                                            // 2 = each image at each section (mp3 audio)
                                            // 3 = image
@@ -42,4 +42,4 @@ var _bg_style_mobile =                  4;
 //
 
 var _bg_effect_star_color =             'rgba(255, 255, 255, .9)';// rgba format - star color
-var _bg_effect_star_width =             1.5; // px - star width
+var _bg_effect_star_width = 1.6; // px - star width
