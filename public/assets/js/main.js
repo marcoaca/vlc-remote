@@ -4,28 +4,6 @@ var $ = jQuery.noConflict();
     /**
      * @return {undefined}
      */
-    function shim() {
-        var emptyJ = $("#countdown_dashboard");
-        if (emptyJ.length) {
-            $spy.addClass("countdown-on");
-            emptyJ.countDown({
-                targetDate: {
-                    "day": 0,
-                    "month": 0,
-                    "year": 0,
-                    "hour": 0,
-                    "min": 0,
-                    "sec": 0,
-                    "utc": false
-                },
-                omitWeeks: true
-            });
-        }
-    }
-
-    /**
-     * @return {undefined}
-     */
     function transition() { //trata das animações
         var statsTemplate;
         statsTemplate = "#" + $(".section").filter(".is-active").attr("id");
@@ -460,29 +438,6 @@ var $ = jQuery.noConflict();
                 }
             }
         });
-    }
-
-    /**
-     * @return {undefined}
-     */
-    function displayMachineTagTree() {
-        if (_0x7cd2x8) {
-            if (_bg_style_mobile == 3 || _bg_style_mobile == 4) {
-                setupTreeTable();
-            }
-        } else {
-            if (_bg_style_desktop == 3 || _bg_style_desktop == 4) {
-                setupTreeTable();
-            }
-        }
-    }
-
-    /**
-     * @return {undefined}
-     */
-    function setupTreeTable() {
-        $(".site-bg__video").remove();
-        $spy.addClass("is-site-bg-img");
     }
 
     /**
@@ -1024,12 +979,10 @@ var $ = jQuery.noConflict();
         dataAndEvents.preventDefault();
     });
     $(".site-footer__social").clone().removeClass("site-footer__social").addClass("site-nav__social").insertAfter(".site-nav__menu");
-    shim();
     domReady();
     run();
     onDeviceReady();
     init();
-    displayMachineTagTree();
     access();
     reset();
     $(window).on("load", function () {
