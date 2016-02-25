@@ -420,7 +420,7 @@ var $ = jQuery.noConflict();
                 $(form).ajaxSubmit({
                     type: "POST",
                     url: "/api-vlc/add",
-                    dataType: json,
+                    dataType: "json",
                     cache: false,
                     data: emptyJ.serialize(),
                     /**
