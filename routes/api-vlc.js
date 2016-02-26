@@ -1,10 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var r = require("request");
+var Map = require("collections/map");
 
 var keyY = "AIzaSyBhsWbkizSzKJ0HPhRYmkdjkO6FdG6zl3A";
 var vlcPassword = 'password';
-var playlist = {};
+var playlist = new Map();
 
 var authHeader = 'Basic ' + (new Buffer(':' + vlcPassword, 'utf8')).toString('base64');
 
@@ -78,7 +79,7 @@ router.all('/add', function (req, res, next) {
     var musicID = pattern.exec(m);
     var b = musicID.toString();
     var a = b.substring(4);
-    var youtube = 'https://www.googleapis.com/youtube/v3/videos?id=' + a + '&part=contentDetails&key=' + keyY;
+    var youtube = 'https://www.googleapis.com/youtube/v3/videos?id=' + a + '&part=contentDetails&fields=items(snippet(title),contentDetails(duration))&key=' + keyY;
 
 
     requestYoutube.get(youtube,
@@ -86,8 +87,8 @@ router.all('/add', function (req, res, next) {
             if (!error && response.statusCode == 200) {
                 var result = JSON.parse(body);
                 var duration = result.items[0]["contentDetails"].duration;
-
-
+                playlist.set(a, duration);
+                var entries = playlist.entries();
             } else {
                 console.log(error);
                 res.status(500).send(error);
