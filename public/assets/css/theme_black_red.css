@@ -878,6 +878,7 @@ i {
 /* audio */
 .site-header__icon__audio {
   display: none;
+  cursor: pointer;
 }
 
 .is-audio-on .site-header__icon__audio,

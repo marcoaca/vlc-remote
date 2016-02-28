@@ -3,6 +3,9 @@ socket.on('news', function (data) {
     console.log(data);
     socket.emit('my other event', { my: 'data' });
 });
+socket.on('pause', function(data){
+
+});
 
 function refresh(statusInfo) {
     var state = statusInfo.state;
@@ -89,7 +92,8 @@ $(document).ready(function () {
     });
 
     $('.site-header__icon__audio').click(function () {
-        $.get('/api-vlc/pause');
+        //$.get('/api-vlc/pause');
+        socket.emit('pause');
     });
 
     getStatus();

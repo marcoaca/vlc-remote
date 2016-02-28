@@ -1,20 +1,24 @@
-var request = require("request")
+var r = require("request");
 
 var vlcPassword = 'password';
-var vlcRequest = request.defaults({
+var request = r.defaults({
     headers : {
         'Authorization' : 'Basic ' + (new Buffer(':' + vlcPassword, 'utf8')).toString('base64')
     }
 });
 
-
-
-
-var vlc;
+var vlc={};
 
 vlc.pause = function(){
-    request.get('http://127.0.0.1:8080/requests/status.xml?command=pl_pause', function (error, response, body) {
-        return response;
+    request.get('http://127.0.0.1:8080/requests/status.json?command=pl_pause', function (error, response, body) {
+        if (!error){
+            var state = JSON.parse(body).state;
+            if(state){
+                return JSON.parse(body).state;
+            }
+        } else {
+            return error;
+        }
     });
 }
 
@@ -22,12 +26,14 @@ vlc.add = function(resource){
     
 }
 
-vlc.raiseVolume = function(amount){
-    
-}
-
-vlc.lowerVolume = function(amount){
-    
+vlc.volume = function(amount){
+    request.get('http://127.0.0.1:8080/requests/playlist.json?command=volume&val=' + amount, function (error, response, body) {
+        if (!error){
+            return body;
+        } else {
+            return error;
+        }
+    });
 }
 
 
