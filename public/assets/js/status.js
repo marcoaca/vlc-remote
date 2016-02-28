@@ -56,10 +56,12 @@ function getStatus() {
 $(document).ready(function () {
     $(document).keypress(function (event) {
         if (event.which == 43) {
-            $.get('/api-vlc/volume', {volume: '+5'});
+            //$.get('/api-vlc/volume', {volume: '+5'});
+            socket.emit('volume', {volume:'+5'});
         }
         if (event.which == 45) {
-            $.get('/api-vlc/volume', {volume: '-5'});
+            //$.get('/api-vlc/volume', {volume: '-5'});
+            socket.emit('volume', {volume:'-5'});
         }
     })
     $('a[href="#playlist"]').click(function () {
