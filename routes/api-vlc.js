@@ -88,9 +88,9 @@ router.all('/add', function (req, res, next) {
                 var result = JSON.parse(body);
                 if (result.items[0]["contentDetails"] != null && result.items[0]["contentDetails"].duration != null) {
                     var duration = result.items[0]["contentDetails"].duration;
+                    playlist.set(a, duration);
+                    var entries = playlist.entries();
                 }
-                playlist.set(a, duration);
-                var entries = playlist.entries();
             } else {
                 console.log(error);
                 res.status(500).send(error);
