@@ -79,7 +79,7 @@ router.all('/add', function (req, res, next) {
     var musicID = pattern.exec(m);
     var b = musicID.toString();
     var a = b.substring(4);
-    var youtube = 'https://www.googleapis.com/youtube/v3/videos?id=' + a + '&part=contentDetails&fields=items(snippet(title),contentDetails(duration))&key=' + keyY;
+    var youtube = 'https://www.googleapis.com/youtube/v3/videos?id=' + a + '&part=contentDetails,snippet&fields=items(snippet(title),contentDetails(duration))&key=' + keyY;
 
 
     requestYoutube.get(youtube,
