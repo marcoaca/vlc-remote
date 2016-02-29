@@ -86,9 +86,9 @@ router.all('/add', function (req, res, next) {
         function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 var result = JSON.parse(body);
-                if (result.items[0]["contentDetails"] != null && result.items[0]["contentDetails"].duration !null
-            )
-                var duration = result.items[0]["contentDetails"].duration;
+                if (result.items[0]["contentDetails"] != null && result.items[0]["contentDetails"].duration != null) {
+                    var duration = result.items[0]["contentDetails"].duration;
+                }
                 playlist.set(a, duration);
                 var entries = playlist.entries();
             } else {
