@@ -75,7 +75,7 @@ router.all('/add', function (req, res, next) {
         res.status(500).json({error: 'Missing song link argument.'});
         return;
     }
-    var pattern = /v\%3D[a-zA-Z0-9_-]+/;
+    var pattern = /v\%3D[a-zA-Z0-9_-]{11}/;
     var musicID = pattern.exec(m);
     var b = musicID.toString();
     var a = b.substring(4);
@@ -86,7 +86,7 @@ router.all('/add', function (req, res, next) {
         function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 var result = JSON.parse(body);
-                if (result.items[0]["contentDetails"] != null && result.items[0]["contentDetails"].duration != null) {
+                if (result.items[0] != null && result.items[0]["contentDetails"] != null && result.items[0]["contentDetails"].duration != null) {
                     var duration = result.items[0]["contentDetails"].duration;
                     playlist.set(a, duration);
                     var entries = playlist.entries();
