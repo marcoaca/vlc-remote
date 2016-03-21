@@ -114,7 +114,6 @@ router.all('/add', function (req, res, next) {
     /*while(queue.length > 0){
      var music = queue.pop();*/
     //setTimeout(callVLC(music.id), music.duration);
-
     /*}*/
 
     function callVLC(music) {
@@ -122,7 +121,8 @@ router.all('/add', function (req, res, next) {
             function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     var result = JSON.parse(body);
-                    var command = result.currentplid > -1 ? 'in_enqueue&input=' + music.id : 'in_play&input=' + music.id;
+                    var command = result.currentplid > -1 ? "in_enqueue&input=" + escape("https://www.youtube.com/watch?v=" + music.id) : "in_play&input=" + escape("https://www.youtube.com/watch?v=" + music.id);
+                    console.log('http://127.0.0.1:8080/requests/status.json?command=' + command);
                     request.get('http://127.0.0.1:8080/requests/status.json?command=' + command,
                         function (error, response, body) {
                             res.status(200).json({code: "0", message: "Music inserted with success."});
