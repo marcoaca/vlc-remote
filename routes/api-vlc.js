@@ -88,8 +88,8 @@ router.all('/add', function (req, res, next) {
     requestYoutube.get(youtube,
         function (error, response, body) {
             if (!error && response.statusCode == 200) {
-
                 var result = JSON.parse(body);
+                console.info(JSON.stringify(result));
                 if (result.items[0] != null && result.items[0]["contentDetails"] != null && result.items[0]["contentDetails"].duration != null) {
                     var duration = moment.duration(result.items[0]["contentDetails"].duration).asMilliseconds();
                     var title = result.items[0]["snippet"].title;
@@ -97,8 +97,7 @@ router.all('/add', function (req, res, next) {
                     console.info(duration);
                     var music = {id: id, title: title, duration: duration};
                     queue.unshift(music);
-                    playlist.set(id, duration);
-                    var entries = playlist.entries();
+                    var entries = JSON.stringify(queue.toJSON());
                     console.info(entries);
                 } else {
                     console.error("Could not find music details");
