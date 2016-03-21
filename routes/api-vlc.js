@@ -2,10 +2,13 @@ var express = require('express');
 var router = express.Router();
 var r = require("request");
 var Map = require("collections/map");
+var List = require("collections/list");
+var moment = require('moment');
 
 var keyY = "AIzaSyBhsWbkizSzKJ0HPhRYmkdjkO6FdG6zl3A";
 var vlcPassword = 'password';
 var playlist = new Map();
+var queue = new List();
 
 var authHeader = 'Basic ' + (new Buffer(':' + vlcPassword, 'utf8')).toString('base64');
 
@@ -78,46 +81,62 @@ router.all('/add', function (req, res, next) {
     var pattern = /v\%3D[a-zA-Z0-9_-]{11}/;
     var musicID = pattern.exec(m);
     var b = musicID.toString();
-    var a = b.substring(4);
-    var youtube = 'https://www.googleapis.com/youtube/v3/videos?id=' + a + '&part=contentDetails,snippet&fields=items(snippet(title),contentDetails(duration))&key=' + keyY;
-
+    var id = b.substring(4);
+    var youtube = 'https://www.googleapis.com/youtube/v3/videos?id=' + id + '&part=contentDetails,snippet&fields=items(snippet(title),contentDetails(duration))&key=' + keyY;
+    console.info(youtube);
 
     requestYoutube.get(youtube,
         function (error, response, body) {
             if (!error && response.statusCode == 200) {
+
                 var result = JSON.parse(body);
                 if (result.items[0] != null && result.items[0]["contentDetails"] != null && result.items[0]["contentDetails"].duration != null) {
-
-                    var duration = result.items[0]["contentDetails"].duration;
-                    playlist.set(a, duration);
+                    var duration = moment.duration(result.items[0]["contentDetails"].duration).asMilliseconds();
+                    var title = result.items[0]["snippet"].title;
+                    console.info(title);
+                    console.info(duration);
+                    var music = {id: id, title: title, duration: duration};
+                    queue.unshift(music);
+                    playlist.set(id, duration);
                     var entries = playlist.entries();
+                    console.info(entries);
+                } else {
+                    console.error("Could not find music details");
                 }
             } else {
                 console.log(error);
                 res.status(500).send(error);
                 return;
             }
+            callVLC(music);
         }
     );
+    /*while(queue.length > 0){
+     var music = queue.pop();*/
+    //setTimeout(callVLC(music.id), music.duration);
 
-    request.get('http://127.0.0.1:8080/requests/status.json',
-        function (error, response, body) {
-            if (!error && response.statusCode == 200) {
-                var result = JSON.parse(body);
-                var command = result.currentplid > -1 ? 'in_enqueue&input='+m:'in_play&input='+m ;
-                request.get('http://127.0.0.1:8080/requests/status.json?command=' + command,
-                    function (error, response, body) {
-                        res.status(200).json({code: "0", message: "Music inserted with success."});
-                        return;
-                    }
-                );
-            } else {
-                console.log(error);
-                res.status(500).send(error);
-                return;
+    /*}*/
+
+    function callVLC(music) {
+        request.get('http://127.0.0.1:8080/requests/status.json',
+            function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    var result = JSON.parse(body);
+                    var command = result.currentplid > -1 ? 'in_enqueue&input=' + music.id : 'in_play&input=' + music.id;
+                    request.get('http://127.0.0.1:8080/requests/status.json?command=' + command,
+                        function (error, response, body) {
+                            res.status(200).json({code: "0", message: "Music inserted with success."});
+                            return;
+                        }
+                    );
+                } else {
+                    console.log(error);
+                    res.status(500).send(error);
+                    return;
+                }
             }
-        }
-    );
+        );
+    }
 });
 
 router.all('/play', function (req, res, next) {
@@ -137,6 +156,5 @@ router.all('/stop', function (req, res, next) {
         res.status(200).end();
     });
 });
-
 
 module.exports = router;
