@@ -99,6 +99,7 @@ router.all('/add', function (req, res, next) {
                     queue.unshift(music);
                     var entries = JSON.stringify(queue.toJSON());
                     console.info(entries);
+                    callVLC(music);
                 } else {
                     console.error("Could not find music details");
                 }
@@ -107,7 +108,6 @@ router.all('/add', function (req, res, next) {
                 res.status(500).send(error);
                 return;
             }
-            callVLC(music);
         }
     );
     /*while(queue.length > 0){
