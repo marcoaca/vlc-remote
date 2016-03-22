@@ -102,6 +102,8 @@ router.all('/add', function (req, res, next) {
                     callVLC(music);
                 } else {
                     console.error("Could not find music details");
+                    res.status(500).send(error);
+                    return;
                 }
             } else {
                 console.log(error);
